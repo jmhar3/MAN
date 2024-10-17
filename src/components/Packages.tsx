@@ -1,5 +1,7 @@
 import * as React from "react";
 import {
+  Box,
+  Divider,
   Flex,
   Heading,
   Stack,
@@ -10,6 +12,14 @@ import {
 import { Package } from "./Package";
 import { SectionContainer } from "./SectionContainer";
 
+const Extra = (props: { label: string; price: string }) => {
+  return (
+    <Stack gap="0">
+      <Text fontWeight="semibold">{props.label}</Text>
+      <Text>{props.price}</Text>
+    </Stack>
+  );
+};
 export const Packages = () => {
   const [green900] = useToken("colors", ["green.900"]);
 
@@ -44,7 +54,7 @@ export const Packages = () => {
   };
 
   return (
-    <SectionContainer label="Packages">
+    <SectionContainer label="Packages" colorScheme="light">
       <Stack gap="5">
         <Flex justify="center" justifyContent="space-evenly">
           <Package {...packages.digital} />
@@ -55,12 +65,15 @@ export const Packages = () => {
       <Stack
         border={`solid 1px ${green900}`}
         rounded="md"
+        gap="3"
         py="6"
         px="10"
         mt="4"
-        mx="10"
       >
-        <Heading>Extras</Heading>
+        <Flex align="center" gap="5">
+          <Heading>Extras</Heading>
+          <Divider borderColor="green.900" />
+        </Flex>
         <Stack
           direction="row"
           align="center"
@@ -68,22 +81,13 @@ export const Packages = () => {
           justifyContent="space-between"
           divider={<StackDivider borderColor="green.900" />}
         >
-          <Stack>
-            <Text>Add on film</Text>
-            <Text>$50</Text>
-          </Stack>
-          <Stack>
-            <Text>30 mins extension w 5 additional images</Text>
-            <Text>$150</Text>
-          </Stack>
-          <Stack>
-            <Text>Additional Edits (price per image)</Text>
-            <Text>Light Retouch - $20 | Full Retouch - $45</Text>
-          </Stack>
-          <Stack>
-            <Text>All RAWs in High Resolution</Text>
-            <Text>$150</Text>
-          </Stack>
+          <Extra label="Add on film" price="$50" />
+          <Extra label="30 mins extension w 5 additional images" price="$150" />
+          <Extra
+            label="Additional Edits (price per image)"
+            price="Light Retouch - $20 | Full Retouch - $45"
+          />
+          <Extra label="All RAWs in High Resolution" price="$150" />
         </Stack>
       </Stack>
     </SectionContainer>

@@ -4,12 +4,13 @@ import { SectionHeading } from "./SectionHeading";
 
 interface SectionContainerProps extends React.PropsWithChildren {
   label: string;
+  colorScheme: "light" | "dark";
 }
 
 export const SectionContainer = (props: SectionContainerProps) => {
   return (
     <Box id={props.label.toLowerCase()} py="5" px="10">
-      <SectionHeading label={props.label} />
+      <SectionHeading {...props} />
       {props.children}
     </Box>
   );
