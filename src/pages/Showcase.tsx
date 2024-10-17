@@ -3,7 +3,7 @@ import { Box, Text } from "@chakra-ui/react";
 
 export const Showcase = () => {
   return (
-    <Box h="100vh">
+    <Box h="100vh" id="gallery">
       <Text>Gallery</Text>
     </Box>
   );
