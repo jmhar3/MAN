@@ -1,7 +1,7 @@
 "use client";
 
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Link as ChakraLink } from "@chakra-ui/react";
+import { Link as ChakraLink, useToken } from "@chakra-ui/react";
 import {
   Box,
   Flex,
@@ -25,7 +25,7 @@ const NavLink = (props: NavLinkProps) => {
     <ChakraLink
       px={2}
       py={1}
-      rounded="md"
+      color="brand.200"
       as={ReactRouterLink}
       to={
         label === "Gallery"
@@ -34,7 +34,7 @@ const NavLink = (props: NavLinkProps) => {
       }
       _hover={{
         textDecoration: "none",
-        bg: useColorModeValue("gray.200", "gray.700"),
+        borderBottom: "1px solid green",
       }}
     >
       {label}
@@ -45,6 +45,8 @@ const NavLink = (props: NavLinkProps) => {
 export const Nav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
+  const [brand200] = useToken("colors", ["brand.200"]);
+
   return (
     <Box
       px={4}
@@ -52,7 +54,7 @@ export const Nav = () => {
       top="0"
       left="0"
       w="100%"
-      bg="linear-gradient(gray, transparent)"
+      //   bg={`linear-gradient(${brand200}, transparent)`}
     >
       <Flex p="4" alignItems="center" justifyContent="space-between">
         <IconButton
@@ -76,8 +78,12 @@ export const Nav = () => {
           <Button
             as={ReactRouterLink}
             to="/#contact "
-            variant="solid"
-            colorScheme="teal"
+            variant="outline"
+            color="brand.200"
+            borderColor="brand.200"
+            _hover={{
+              bg: "green.900",
+            }}
             size="sm"
             mr={4}
           >

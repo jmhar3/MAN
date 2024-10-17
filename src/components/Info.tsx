@@ -1,10 +1,7 @@
 import * as React from "react";
-import { Box, Heading } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import { SectionContainer } from "./SectionContainer";
 
 export const Info = () => {
-  return (
-    <Box h="100vh" id="info" alignContent="center">
-      <Heading>Working with me</Heading>
-    </Box>
-  );
+  return <SectionContainer label="Working with me"></SectionContainer>;
 };
