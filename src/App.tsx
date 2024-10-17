@@ -8,9 +8,9 @@ import { Nav } from "./components/Nav";
 export const App = () => {
   return (
     <ChakraProvider theme={theme}>
-      <Nav />
-
       <Router>
+        <Nav />
+
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>

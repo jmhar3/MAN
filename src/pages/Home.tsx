@@ -5,11 +5,11 @@ import { Packages } from "../components/Packages";
 import { Info } from "../components/Info";
 import { Testimonials } from "../components/Testimonials";
 import { Contact } from "../components/Contact";
-import { useLocation } from "react-router-dom";
+import ScrollToAnchor from "../helpers/ScrollToAnchor";
 
 export const Home = () => {
-  const location = useLocation();
-  const { hash, pathname, search } = location;
+  ScrollToAnchor();
+
   return (
     <>
       <Welcome />

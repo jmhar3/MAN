@@ -1,5 +1,7 @@
 "use client";
 
+import { Link as ReactRouterLink } from "react-router-dom";
+import { Link as ChakraLink } from "@chakra-ui/react";
 import {
   Box,
   Flex,
@@ -9,16 +11,9 @@ import {
   useColorModeValue,
   Stack,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, AddIcon } from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
-const Links = [
-  "About",
-  "Contact",
-  "Packages",
-  "Info",
-  "Testimonials",
-  "Gallery",
-];
+const Links = ["About", "Packages", "Info", "Testimonials", "Gallery"];
 
 interface NavLinkProps {
   label: string;
@@ -27,19 +22,23 @@ interface NavLinkProps {
 const NavLink = (props: NavLinkProps) => {
   const { label } = props;
   return (
-    <Box
-      as="a"
+    <ChakraLink
       px={2}
       py={1}
       rounded="md"
+      as={ReactRouterLink}
+      to={
+        label === "Gallery"
+          ? `/${label.toLowerCase()}`
+          : `/#${label.toLowerCase()}`
+      }
       _hover={{
         textDecoration: "none",
         bg: useColorModeValue("gray.200", "gray.700"),
       }}
-      href={`/#${label.toLowerCase()}`}
     >
       {label}
-    </Box>
+    </ChakraLink>
   );
 };
 
@@ -47,7 +46,14 @@ export const Nav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box px={4}>
+    <Box
+      px={4}
+      position="fixed"
+      top="0"
+      left="0"
+      w="100%"
+      bg="linear-gradient(gray, transparent)"
+    >
       <Flex p="4" alignItems="center" justifyContent="space-between">
         <IconButton
           size="md"
