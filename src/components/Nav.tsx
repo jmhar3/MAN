@@ -73,7 +73,14 @@ export const Nav = () => {
           ))}
         </Stack>
         <Flex alignItems="center">
-          <Button variant="solid" colorScheme="teal" size="sm" mr={4}>
+          <Button
+            as={ReactRouterLink}
+            to="/#contact "
+            variant="solid"
+            colorScheme="teal"
+            size="sm"
+            mr={4}
+          >
             Contact
           </Button>
         </Flex>
