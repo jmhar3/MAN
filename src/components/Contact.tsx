@@ -48,30 +48,53 @@ export const Contact = () => {
             <Input type="name" bg="brand.100" maxW="60%" />
           </Stack>
 
-          <Stack direction="row" gap="0" justifyContent="space-between">
-            <FormLabel color="brand.100">Email * </FormLabel>
-            <Stack gap="0" minW="60%">
-              <Input
-                bg="brand.100"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              {isEmailError && (
-                <FormHelperText color="brand.100">
-                  Enter the email you'd like to me to contact you on.
-                </FormHelperText>
-              )}
-            </Stack>
-          </Stack>
-
-          <Stack>
+          <Stack gap="5">
             <Stack
               //   pb="3"
               direction="row"
               gap="0"
               justifyContent="space-between"
             >
+              <FormLabel color="brand.100">Preferred Contact Method</FormLabel>
+              <RadioGroup defaultValue="2">
+                <Stack spacing={5} direction="row">
+                  <Radio colorScheme="red" value="email">
+                    <Text color="brand.100">Email</Text>
+                  </Radio>
+                  <Radio colorScheme="red" value="instagram">
+                    <Text color="brand.100">Instagram</Text>
+                  </Radio>
+                </Stack>
+              </RadioGroup>
+            </Stack>
+
+            <Stack direction="row" gap="0" justifyContent="space-between">
+              <FormLabel color="brand.100">Instagram Username</FormLabel>
+              <Stack gap="0" minW="60%">
+                <Input bg="brand.100" />
+              </Stack>
+            </Stack>
+
+            <Stack direction="row" gap="0" justifyContent="space-between">
+              <FormLabel color="brand.100">Email *</FormLabel>
+              <Stack gap="0" minW="60%">
+                <Input
+                  bg="brand.100"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                {isEmailError && (
+                  <FormHelperText color="brand.100">
+                    Enter the email you'd like to me to contact you on.
+                  </FormHelperText>
+                )}
+              </Stack>
+            </Stack>
+          </Stack>
+
+          <Stack>
+            <Stack direction="row" gap="0" justifyContent="space-between">
               <FormLabel color="brand.100">Preferred Package</FormLabel>
               <RadioGroup defaultValue="2">
                 <Stack spacing={5} direction="row">
@@ -112,16 +135,16 @@ export const Contact = () => {
             >
               <FormLabel color="brand.100">Interested in extras</FormLabel>
               <Stack spacing={5} direction="row">
-                <Checkbox colorScheme="red" value="digital">
+                <Checkbox colorScheme="red" value="film">
                   <Text color="brand.100">Film</Text>
                 </Checkbox>
-                <Checkbox colorScheme="red" value="film">
+                <Checkbox colorScheme="red" value="extension">
                   <Text color="brand.100">30 min extension</Text>
                 </Checkbox>
-                <Checkbox colorScheme="red" value="complete">
+                <Checkbox colorScheme="red" value="additional edits">
                   <Text color="brand.100">Additional edits</Text>
                 </Checkbox>
-                <Checkbox colorScheme="red" value="complete">
+                <Checkbox colorScheme="red" value="RAWs">
                   <Text color="brand.100">All RAWs</Text>
                 </Checkbox>
               </Stack>
