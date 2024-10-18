@@ -55,13 +55,11 @@ export const Packages = () => {
 
   return (
     <SectionContainer label="Packages" colorScheme="light">
-      <Stack gap="5">
-        <Flex justify="center" justifyContent="space-evenly">
-          <Package {...packages.digital} />
-          <Package {...packages.complete} isDistinct />
-          <Package {...packages.film} />
-        </Flex>
-      </Stack>
+      <Flex justify="center" justifyContent="space-evenly">
+        <Package {...packages.digital} />
+        <Package {...packages.complete} isDistinct />
+        <Package {...packages.film} />
+      </Flex>
       <Stack
         border={`solid 1px ${green900}`}
         rounded="md"

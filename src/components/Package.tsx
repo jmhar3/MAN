@@ -31,7 +31,6 @@ export const Package = (props: PackageProps) => {
 
   const [green900] = useToken("colors", ["green.900"]);
   const [showContactButton, setShowContactButton] = useBoolean();
-  const [buttonFocus, setButtonFocus] = useBoolean();
   const navigate = useNavigate();
 
   const bookPackage = () => {
@@ -53,9 +52,11 @@ export const Package = (props: PackageProps) => {
         align="center"
         border={isDistinct ? `1px solid ${green900}` : "none"}
       >
-        <Stack align="center">
+        <Stack align="center" gap="1">
           <Heading size="xl">{title}</Heading>
-          <Text as="i">{description}</Text>
+          <Text as="i" fontSize="lg">
+            {description}
+          </Text>
         </Stack>
         <List spacing={3}>
           {included.map((item) => (
@@ -69,16 +70,13 @@ export const Package = (props: PackageProps) => {
       </Stack>
       <Button
         onClick={bookPackage}
-        color="brand.200"
-        bg="green.900"
-        as={motion.div}
+        border={`solid 1px ${green900}`}
+        color="green.900"
+        bg="brand.200"
+        w="100%"
         _hover={{
           bg: "green.900",
-        }}
-        onMouseEnter={setButtonFocus.on}
-        onMouseLeave={setButtonFocus.off}
-        animate={{
-          width: buttonFocus ? "fit-content" : "100%",
+          color: "brand.200",
         }}
         visibility={showContactButton ? "inherit" : "hidden"}
       >
