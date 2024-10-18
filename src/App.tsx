@@ -22,7 +22,6 @@ export const App = () => {
     },
     styles: {
       global: {
-        // styles for the `body`
         body: {
           bg: "#f4f5f1",
         },
@@ -33,6 +32,8 @@ export const App = () => {
         100: "#f4f5f1",
         200: "#f6f8f1",
         // ...
+        400: "#e7f3f3",
+        500: "#d6e7e6",
       },
     },
   });

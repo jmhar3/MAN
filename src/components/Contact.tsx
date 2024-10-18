@@ -35,7 +35,7 @@ export const Contact = () => {
           w="fit-content"
           type="submit"
           bg="brand.200"
-          _hover={{ bg: "brand.100" }}
+          _hover={{ bg: "brand.400" }}
         >
           Send Message
         </Button>
@@ -155,7 +155,7 @@ export const Contact = () => {
         <Box position="relative">
           <Divider borderColor="brand.100" />
           <AbsoluteCenter bg="green.900" px="4">
-            <Button type="submit" bg="brand.200" _hover={{ bg: "brand.100" }}>
+            <Button type="submit" bg="brand.200" _hover={{ bg: "brand.400" }}>
               Send Message
             </Button>
           </AbsoluteCenter>
