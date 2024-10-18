@@ -1,17 +1,17 @@
 "use client";
 
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { Link as ReactRouterLink } from "react-router-dom";
-import { Link as ChakraLink, useToken } from "@chakra-ui/react";
+
 import {
   Box,
   Flex,
   IconButton,
   Button,
   useDisclosure,
-  useColorModeValue,
   Stack,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 const Links = ["About", "Packages", "Info", "Testimonials", "Gallery"];
 
