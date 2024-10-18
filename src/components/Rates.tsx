@@ -20,6 +20,27 @@ import { SectionContainer } from "./SectionContainer";
 import { CheckCircleIcon, InfoOutlineIcon } from "@chakra-ui/icons";
 import { useNavigate } from "react-router-dom";
 
+const packages = [
+  {
+    title: "35mm Film",
+    description: "My personal specialty",
+    included: ["2 hours", "20 high res film scans"],
+    rate: 635,
+  },
+  {
+    title: "Digital",
+    description: "Something for everyone",
+    included: ["1.5 hours", "15 high resolution edits", "Light Retouching"],
+    rate: 475,
+  },
+  {
+    title: "Complete",
+    description: "The ultimate brand booster",
+    included: ["4 hours", "20 high resolution edits", "Complete Retouching"],
+    rate: 1000,
+  },
+];
+
 const Extra = (props: { label: string; price: string }) => {
   return (
     <Stack gap="0">
@@ -28,29 +49,9 @@ const Extra = (props: { label: string; price: string }) => {
     </Stack>
   );
 };
+
 export const Rates = () => {
   const [green900] = useToken("colors", ["green.900"]);
-
-  const packages = [
-    {
-      title: "35mm Film",
-      description: "My personal specialty",
-      included: ["2 hours", "20 high res film scans"],
-      rate: 635,
-    },
-    {
-      title: "Digital",
-      description: "Something for everyone",
-      included: ["1.5 hours", "15 high resolution edits", "Light Retouching"],
-      rate: 475,
-    },
-    {
-      title: "Complete",
-      description: "The ultimate brand booster",
-      included: ["4 hours", "20 high resolution edits", "Complete Retouching"],
-      rate: 1000,
-    },
-  ];
 
   return (
     <SectionContainer label="Packages" colorScheme="light">

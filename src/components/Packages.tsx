@@ -12,6 +12,36 @@ import {
 import { Package } from "./Package";
 import { SectionContainer } from "./SectionContainer";
 
+const packages = {
+  digital: {
+    title: "Digital",
+    description: "Something for everyone",
+    included: ["1.5 hours", "15 high resolution edits"],
+    rate: 475,
+  },
+  film: {
+    title: "35mm Film",
+    description: "My personal specialty",
+    included: ["2 hours", "20 high res film scans"],
+    rate: 635,
+  },
+  complete: {
+    title: "Complete",
+    description: "The ultimate brand booster",
+    included: [
+      "4 hours",
+      "20 high resolution edits",
+      "Complete Retouching including",
+      "airbrushing",
+      "blemish removal",
+      "teeth whitening",
+      "tattoo removal",
+      "colour grading",
+    ],
+    rate: 1000,
+  },
+};
+
 const Extra = (props: { label: string; price: string }) => {
   return (
     <Stack gap="0">
@@ -20,38 +50,9 @@ const Extra = (props: { label: string; price: string }) => {
     </Stack>
   );
 };
+
 export const Packages = () => {
   const [green900] = useToken("colors", ["green.900"]);
-
-  const packages = {
-    digital: {
-      title: "Digital",
-      description: "Something for everyone",
-      included: ["1.5 hours", "15 high resolution edits"],
-      rate: 475,
-    },
-    film: {
-      title: "35mm Film",
-      description: "My personal specialty",
-      included: ["2 hours", "20 high res film scans"],
-      rate: 635,
-    },
-    complete: {
-      title: "Complete",
-      description: "The ultimate brand booster",
-      included: [
-        "4 hours",
-        "20 high resolution edits",
-        "Complete Retouching including",
-        "airbrushing",
-        "blemish removal",
-        "teeth whitening",
-        "tattoo removal",
-        "colour grading",
-      ],
-      rate: 1000,
-    },
-  };
 
   return (
     <SectionContainer label="Packages" colorScheme="light">
