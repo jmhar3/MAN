@@ -6,6 +6,7 @@ import { Info } from "../components/Info";
 import { Testimonials } from "../components/Testimonials";
 import { Contact } from "../components/Contact";
 import ScrollToAnchor from "../helpers/ScrollToAnchor";
+import { Rates } from "../components/Rates";
 
 export const Home = () => {
   ScrollToAnchor();
@@ -14,7 +15,7 @@ export const Home = () => {
     <>
       <Welcome />
       <About />
-      <Packages />
+      <Rates />
       <Info />
       <Testimonials />
       <Contact />
