@@ -7,7 +7,12 @@ export const Welcome = () => {
   return (
     <Box backgroundImage="/nature.png">
       <Stack align="center" justify="center" h="100vh" color="white">
-        <Heading fontFamily="Jost" pr="120px" fontSize="6xl">
+        <Heading
+          pr="120px"
+          fontSize="6xl"
+          fontFamily="Jost"
+          textShadow="1px 1px 2px grey"
+        >
           Melbourne
         </Heading>
 
@@ -21,7 +26,12 @@ export const Welcome = () => {
           Art
         </Heading>
 
-        <Heading fontFamily="Jost" pl="180px" fontSize="6xl">
+        <Heading
+          pl="180px"
+          fontSize="6xl"
+          fontFamily="Jost"
+          textShadow="1px 1px 2px grey"
+        >
           Natural
         </Heading>
 
