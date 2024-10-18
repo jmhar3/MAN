@@ -45,10 +45,16 @@ const NavLink = (props: NavLinkProps) => {
 export const Nav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  const [brand200] = useToken("colors", ["brand.200"]);
-
   return (
-    <Box px="4" top="0" left="0" w="100%" position="fixed" bg="brand.100">
+    <Box
+      px="4"
+      top="0"
+      left="0"
+      w="100%"
+      position="fixed"
+      bg="brand.100"
+      zIndex="999"
+    >
       <Flex p="4" alignItems="center" justifyContent="space-between">
         <IconButton
           size="md"
@@ -81,7 +87,7 @@ export const Nav = () => {
             size="sm"
             mr={4}
           >
-            Contact
+            Get in touch
           </Button>
         </Flex>
       </Flex>
