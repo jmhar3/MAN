@@ -1,4 +1,6 @@
 import * as React from "react";
+import { EmailIcon } from "@chakra-ui/icons";
+
 import {
   AbsoluteCenter,
   Box,
@@ -155,7 +157,12 @@ export const Contact = () => {
         <Box position="relative">
           <Divider borderColor="brand.100" />
           <AbsoluteCenter bg="green.900" px="4">
-            <Button type="submit" bg="brand.200" _hover={{ bg: "brand.400" }}>
+            <Button
+              leftIcon={<EmailIcon />}
+              type="submit"
+              bg="brand.200"
+              _hover={{ bg: "brand.400" }}
+            >
               Send Message
             </Button>
           </AbsoluteCenter>
