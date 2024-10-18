@@ -7,6 +7,7 @@ import { Testimonials } from "../components/Testimonials";
 import { Contact } from "../components/Contact";
 import ScrollToAnchor from "../helpers/ScrollToAnchor";
 import { Rates } from "../components/Rates";
+import { Divider } from "@chakra-ui/react";
 
 export const Home = () => {
   ScrollToAnchor();
@@ -18,6 +19,7 @@ export const Home = () => {
       <Rates />
       <Info />
       <Testimonials />
+      <Divider borderColor="green.900" mb="1" />
       <Contact />
     </>
   );

@@ -11,6 +11,7 @@ import {
   useDisclosure,
   Stack,
   Link as ChakraLink,
+  useToken,
 } from "@chakra-ui/react";
 
 const Links = ["About", "Packages", "Info", "Testimonials", "Gallery"];
@@ -44,6 +45,7 @@ const NavLink = (props: NavLinkProps) => {
 
 export const Nav = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [green900] = useToken("colors", ["green.900"]);
 
   return (
     <Box
@@ -54,6 +56,7 @@ export const Nav = () => {
       position="fixed"
       bg="brand.100"
       zIndex="999"
+      borderBottom={`solid 1px ${green900}`}
     >
       <Flex p="4" alignItems="center" justifyContent="space-between">
         <IconButton
