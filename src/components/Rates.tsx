@@ -22,22 +22,25 @@ import { useNavigate } from "react-router-dom";
 
 const packages = [
   {
-    title: "35mm Film",
-    description: "My personal specialty",
-    included: ["2 hours", "20 high res film scans"],
-    rate: 635,
-  },
-  {
     title: "Digital",
-    description: "Something for everyone",
+    description:
+      "Something for everyone. Laboris nisi ut aliquip ex ea commodo consequat.",
     included: ["1.5 hours", "15 high resolution edits", "Light Retouching"],
     rate: 475,
   },
   {
     title: "Complete",
-    description: "The ultimate brand booster",
+    description:
+      "The ultimate brand booster. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
     included: ["4 hours", "20 high resolution edits", "Complete Retouching"],
     rate: 1000,
+  },
+  {
+    title: "35mm Film",
+    description:
+      "My personal specialty. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    included: ["2 hours", "20 high res film scans"],
+    rate: 635,
   },
 ];
 
@@ -55,42 +58,49 @@ export const Rates = () => {
 
   return (
     <SectionContainer label="Packages" colorScheme="light">
-      <Stack
-        pb="6"
-        gap="6"
-        align="center"
-        divider={<StackDivider borderColor="green.900" />}
-      >
-        {packages.map((item, index) => (
-          <Package {...item} index={index} />
-        ))}
-      </Stack>
-      <Stack
-        border={`solid 1px ${green900}`}
-        rounded="md"
-        gap="3"
-        py="6"
-        px="10"
-        mt="4"
-      >
-        <Flex align="center" gap="5">
-          <Heading>Extras</Heading>
-          <Divider borderColor="green.900" />
-        </Flex>
+      <Stack align="center">
         <Stack
-          direction="row"
+          py="4"
+          gap="6"
+          w="60%"
           align="center"
-          justify="center"
-          justifyContent="space-between"
           divider={<StackDivider borderColor="green.900" />}
         >
-          <Extra label="Add on film" price="$50" />
-          <Extra label="30 mins extension w 5 additional images" price="$150" />
-          <Extra
-            label="Additional Edits (price per image)"
-            price="Light Retouch - $20 | Full Retouch - $45"
-          />
-          <Extra label="All RAWs in High Resolution" price="$150" />
+          {packages.map((item, index) => (
+            <Package {...item} index={index} />
+          ))}
+        </Stack>
+        <Stack
+          gap="3"
+          py="6"
+          px="10"
+          mt="4"
+          w="95%"
+          rounded="md"
+          border={`solid 1px ${green900}`}
+        >
+          <Flex align="center" gap="5">
+            <Heading>Extras</Heading>
+            <Divider borderColor="green.900" />
+          </Flex>
+          <Stack
+            direction="row"
+            align="center"
+            justify="center"
+            justifyContent="space-between"
+            divider={<StackDivider borderColor="green.900" />}
+          >
+            <Extra label="Add on film" price="$50" />
+            <Extra
+              label="30 mins extension w 5 additional images"
+              price="$150"
+            />
+            <Extra
+              label="Additional Edits (price per image)"
+              price="Light Retouch - $20 | Full Retouch - $45"
+            />
+            <Extra label="All RAWs in High Resolution" price="$150" />
+          </Stack>
         </Stack>
       </Stack>
     </SectionContainer>
@@ -102,19 +112,11 @@ export interface PackageProps {
   description: string;
   included: string[];
   rate: number;
-  isDistinct?: boolean;
   index: number;
 }
 
 export const Package = (props: PackageProps) => {
-  const {
-    index,
-    title,
-    description,
-    included,
-    rate,
-    isDistinct = false,
-  } = props;
+  const { index, title, description, included, rate } = props;
 
   const [green900] = useToken("colors", ["green.900"]);
   const navigate = useNavigate();
@@ -128,26 +130,22 @@ export const Package = (props: PackageProps) => {
   };
 
   return (
-    <Flex gap="10" w="60%" justifyContent="space-between">
-      {isOdd(index) && <Img src="/nature.png" w="md" />}
-      <Stack gap="3" align="center" w="40%">
-        <Stack
-          py="3"
-          px="6"
-          gap="5"
-          rounded="md"
-          border={isDistinct ? `1px solid ${green900}` : "none"}
-        >
+    <Flex gap="10" align="center">
+      {isOdd(index) && <Img src="/nature.png" boxSize="sm" objectFit="cover" />}
+
+      <Stack gap="3" align="center" w="100%">
+        <Stack py="3" gap="5">
           <Stack gap="1">
             <Heading size="xl">{title}</Heading>
             <Text as="i" fontSize="lg">
               {description}
             </Text>
           </Stack>
+
           <List spacing={3}>
             {included.map((item) => (
-              <ListItem>
-                <ListIcon as={CheckCircleIcon} color="green.500" />
+              <ListItem as={Flex} gap="2" align="center">
+                <ListIcon as={CheckCircleIcon} color="green.900" m="0" />
                 {item}{" "}
                 {item === "Complete Retouching" && (
                   <Tooltip
@@ -168,8 +166,10 @@ export const Package = (props: PackageProps) => {
               </ListItem>
             ))}
           </List>
+
           <Text fontSize="2xl">${rate}</Text>
         </Stack>
+
         <Button
           onClick={bookPackage}
           border={`solid 1px ${green900}`}
@@ -184,7 +184,10 @@ export const Package = (props: PackageProps) => {
           Book this package
         </Button>
       </Stack>
-      {isOdd(index + 1) && <Img src="/nature.png" w="md" />}
+
+      {isOdd(index + 1) && (
+        <Img src="/nature.png" boxSize="sm" objectFit="cover" />
+      )}
     </Flex>
   );
 };
