@@ -1,5 +1,13 @@
 import * as React from "react";
-import { Heading, Img, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  Img,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 
 interface TestimonialProps {
   image: string;
@@ -8,9 +16,12 @@ interface TestimonialProps {
 }
 export const Testimonial = (props: TestimonialProps) => {
   return (
-    <Stack>
+    <Stack className="embla__slide" flex="0 0 39%" minW="0">
       <Img src={props.image} />
-      <Heading>{props.name}</Heading>
+      <Flex align="center">
+        <Heading w="50%">{props.name}</Heading>
+        <Divider borderColor="green.900" />
+      </Flex>
       <Text>{props.testimonial}</Text>
     </Stack>
   );
