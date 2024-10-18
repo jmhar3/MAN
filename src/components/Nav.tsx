@@ -25,7 +25,7 @@ const NavLink = (props: NavLinkProps) => {
     <ChakraLink
       px={2}
       py={1}
-      color="brand.200"
+      color="green.900"
       as={ReactRouterLink}
       to={
         label === "Gallery"
@@ -48,14 +48,7 @@ export const Nav = () => {
   const [brand200] = useToken("colors", ["brand.200"]);
 
   return (
-    <Box
-      px={4}
-      position="fixed"
-      top="0"
-      left="0"
-      w="100%"
-      //   bg={`linear-gradient(${brand200}, transparent)`}
-    >
+    <Box px="4" top="0" left="0" w="100%" position="fixed" bg="brand.100">
       <Flex p="4" alignItems="center" justifyContent="space-between">
         <IconButton
           size="md"
@@ -79,10 +72,11 @@ export const Nav = () => {
             as={ReactRouterLink}
             to="/#contact "
             variant="outline"
-            color="brand.200"
-            borderColor="brand.200"
+            color="green.900"
+            borderColor="green.900"
             _hover={{
               bg: "green.900",
+              color: "brand.200",
             }}
             size="sm"
             mr={4}
