@@ -1,13 +1,28 @@
 import * as React from "react";
-import { Box, Flex, Img, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Divider,
+  Flex,
+  Heading,
+  Img,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
 import { SectionHeading } from "./SectionHeading";
 import { SectionContainer } from "./SectionContainer";
 
 export const About = () => {
   return (
-    <SectionContainer label="About" colorScheme="light">
-      <Flex gap="6">
-        <Img src="/nature.png" w="xl" />
+    // <SectionContainer label="About" colorScheme="light">
+    <Flex gap="6" px="10" pt="10">
+      <Img src="/nature.png" w="xl" />
+      <Stack>
+        <Flex align="center" gap="5" pb="3">
+          <Heading color="green.900" w="16%">
+            About me
+          </Heading>
+          <Divider borderColor="green.900" />
+        </Flex>
         <Text>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -17,7 +32,8 @@ export const About = () => {
           pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
           culpa qui officia deserunt mollit anim id est laborum.
         </Text>
-      </Flex>
-    </SectionContainer>
+      </Stack>
+    </Flex>
+    // </SectionContainer>
   );
 };
