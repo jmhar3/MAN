@@ -15,6 +15,7 @@ import {
   FormHelperText,
   FormLabel,
   Heading,
+  Icon,
   Input,
   Stack,
   StackDivider,
@@ -101,7 +102,7 @@ export const Contact = (props: ContactProps) => {
 
   const editExtra = (altExtra: ExtrasEnum) => ({
     extras: extras.find((extra) => extra === altExtra)
-      ? extras.filter((extra) => extra === altExtra)
+      ? extras.filter((extra) => extra !== altExtra)
       : [...extras, altExtra],
   });
 
@@ -124,16 +125,16 @@ export const Contact = (props: ContactProps) => {
           <Heading fontFamily="Jost" fontSize="xl">
             Want to know more? Get in touch
           </Heading>
-          <Flex gap="3" align="center">
-            <BiLogoGmail />
+          <Flex gap="2" align="center">
+            <Icon w="5" h="5" as={BiLogoGmail} />
             <Text>NOAH@MELBOURNEARTNATURAL.COM</Text>
           </Flex>
-          <Flex gap="3" align="center">
-            <BiLogoInstagram />
+          <Flex gap="2" align="center">
+            <Icon w="5" h="5" as={BiLogoInstagram} />
             <Text>@MELBOURNEARTNATURAL</Text>
           </Flex>
-          <Flex gap="3" align="center">
-            <BiSolidPencil />
+          <Flex gap="2" align="center">
+            <Icon w="5" h="5" as={BiSolidPencil} />
             <Text>OR USE THE FORM BELOW...</Text>
           </Flex>
         </Stack>
@@ -158,7 +159,6 @@ export const Contact = (props: ContactProps) => {
                   type="name"
                   bg="brand.100"
                   maxW="60%"
-                  border="0"
                   value={name}
                   onChange={(e) =>
                     setContactForm((data: ContactForm) => ({
@@ -175,25 +175,27 @@ export const Contact = (props: ContactProps) => {
                     Preferred Contact Method
                   </FormLabel>
 
-                  <ButtonGroup size="sm" variant="outline">
-                    <FormButton
-                      {...props}
-                      label="Email"
-                      newFormData={{ preferredContactMethod: "email" }}
-                      isSelected={preferredContactMethod === "email"}
-                    />
-                    <FormButton
-                      {...props}
-                      label="Instagram"
-                      newFormData={{ preferredContactMethod: "instagram" }}
-                      isSelected={preferredContactMethod === "instagram"}
-                    />
-                  </ButtonGroup>
+                  <Box w="60%">
+                    <ButtonGroup size="sm" variant="outline">
+                      <FormButton
+                        {...props}
+                        label="Email"
+                        newFormData={{ preferredContactMethod: "email" }}
+                        isSelected={preferredContactMethod === "email"}
+                      />
+                      <FormButton
+                        {...props}
+                        label="Instagram"
+                        newFormData={{ preferredContactMethod: "instagram" }}
+                        isSelected={preferredContactMethod === "instagram"}
+                      />
+                    </ButtonGroup>
+                  </Box>
                 </Stack>
 
                 <Stack direction="row" gap="0" justifyContent="space-between">
                   <FormLabel color="brand.100">Instagram Username</FormLabel>
-                  <Stack gap="0" minW="60%">
+                  <Box minW="60%">
                     <Input
                       bg="brand.100"
                       value={instagram}
@@ -204,7 +206,7 @@ export const Contact = (props: ContactProps) => {
                         }))
                       }
                     />
-                  </Stack>
+                  </Box>
                 </Stack>
 
                 <Stack direction="row" gap="0" justifyContent="space-between">
@@ -231,32 +233,41 @@ export const Contact = (props: ContactProps) => {
               </Stack>
 
               <Stack>
-                <Stack direction="row" gap="0" justifyContent="space-between">
+                <Stack
+                  pb="3"
+                  gap="0"
+                  direction="row"
+                  justifyContent="space-between"
+                >
                   <FormLabel color="brand.100">Preferred Package</FormLabel>
-                  <ButtonGroup size="sm" variant="outline">
-                    <FormButton
-                      {...props}
-                      label="Digital"
-                      newFormData={{ preferredPackage: PackageEnum.Digital }}
-                      isSelected={preferredPackage === "digital"}
-                    />
-                    <FormButton
-                      {...props}
-                      label="Film"
-                      newFormData={{ preferredPackage: PackageEnum.Film }}
-                      isSelected={preferredPackage === "film"}
-                    />
-                    <FormButton
-                      {...props}
-                      label="Complete"
-                      newFormData={{ preferredPackage: PackageEnum.Complete }}
-                      isSelected={preferredPackage === "complete"}
-                    />
-                  </ButtonGroup>
+
+                  <Box w="60%">
+                    <ButtonGroup size="sm" variant="outline">
+                      <FormButton
+                        {...props}
+                        label="Digital"
+                        newFormData={{ preferredPackage: PackageEnum.Digital }}
+                        isSelected={preferredPackage === "digital"}
+                      />
+                      <FormButton
+                        {...props}
+                        label="Film"
+                        newFormData={{ preferredPackage: PackageEnum.Film }}
+                        isSelected={preferredPackage === "film"}
+                      />
+                      <FormButton
+                        {...props}
+                        label="Complete"
+                        newFormData={{ preferredPackage: PackageEnum.Complete }}
+                        isSelected={preferredPackage === "complete"}
+                      />
+                    </ButtonGroup>
+                  </Box>
                 </Stack>
 
                 <Stack direction="row" gap="0" justifyContent="space-between">
                   <FormLabel color="brand.100">Message *</FormLabel>
+
                   <Stack gap="0" minW="60%">
                     <Textarea
                       bg="brand.100"
@@ -268,6 +279,7 @@ export const Contact = (props: ContactProps) => {
                         }))
                       }
                     />
+
                     {messageError && (
                       <FormHelperText color="brand.100">
                         {messageError}
@@ -277,58 +289,59 @@ export const Contact = (props: ContactProps) => {
                 </Stack>
 
                 <Stack
-                  pt="3"
-                  direction="row"
+                  py="3"
                   gap="0"
+                  direction="row"
                   justifyContent="space-between"
                 >
                   <FormLabel color="brand.100">Interested in extras</FormLabel>
-                  <ButtonGroup size="sm" variant="outline">
-                    <FormButton
-                      {...props}
-                      label="Roll of film"
-                      newFormData={editExtra(ExtrasEnum.Film)}
-                      isSelected={extras.includes(ExtrasEnum.Film)}
-                    />
-                    <FormButton
-                      {...props}
-                      label="30 mins extension"
-                      newFormData={editExtra(ExtrasEnum.Extension)}
-                      isSelected={extras.includes(ExtrasEnum.Extension)}
-                    />
-                    <FormButton
-                      {...props}
-                      label="Additional edits"
-                      newFormData={editExtra(ExtrasEnum.Edits)}
-                      isSelected={extras.includes(ExtrasEnum.Edits)}
-                    />
-                    <FormButton
-                      {...props}
-                      label="All RAWs"
-                      newFormData={editExtra(ExtrasEnum.Raws)}
-                      isSelected={extras.includes(ExtrasEnum.Raws)}
-                    />
-                  </ButtonGroup>
+
+                  <Box w="60%">
+                    <ButtonGroup size="sm" variant="outline">
+                      <FormButton
+                        {...props}
+                        label="Roll of film"
+                        newFormData={editExtra(ExtrasEnum.Film)}
+                        isSelected={extras.includes(ExtrasEnum.Film)}
+                      />
+                      <FormButton
+                        {...props}
+                        label="30 mins extension"
+                        newFormData={editExtra(ExtrasEnum.Extension)}
+                        isSelected={extras.includes(ExtrasEnum.Extension)}
+                      />
+                      <FormButton
+                        {...props}
+                        label="Additional edits"
+                        newFormData={editExtra(ExtrasEnum.Edits)}
+                        isSelected={extras.includes(ExtrasEnum.Edits)}
+                      />
+                      <FormButton
+                        {...props}
+                        label="All RAWs"
+                        newFormData={editExtra(ExtrasEnum.Raws)}
+                        isSelected={extras.includes(ExtrasEnum.Raws)}
+                      />
+                    </ButtonGroup>
+                  </Box>
                 </Stack>
               </Stack>
             </Stack>
 
-            <Box position="relative">
+            <Flex align="center" gap="5">
               <Divider borderColor="brand.100" />
-              <AbsoluteCenter bg="green.900" px="4">
-                <Button
-                  type="submit"
-                  bg="brand.200"
-                  onSubmit={sendEmail}
-                  isLoading={isSubmitting}
-                  loadingText="Submitting"
-                  leftIcon={<EmailIcon />}
-                  _hover={{ bg: "brand.400" }}
-                >
-                  Send Message
-                </Button>
-              </AbsoluteCenter>
-            </Box>
+              <Button
+                type="submit"
+                bg="brand.200"
+                onSubmit={sendEmail}
+                isLoading={isSubmitting}
+                loadingText="Submitting"
+                leftIcon={<EmailIcon />}
+                _hover={{ bg: "brand.400" }}
+              >
+                Send Message
+              </Button>
+            </Flex>
           </FormControl>
         </Box>
       </Stack>
@@ -353,7 +366,7 @@ const FormButton = (props: FormButtonProps) => (
     }
     bg={props.isSelected ? "brand.200" : "green.900"}
     color={props.isSelected ? "green.900" : "brand.200"}
-    _hover={{ bg: "brand.200", color: "green.900" }}
+    _hover={{ bg: "brand.800", color: "green.900" }}
   >
     {props.label}
   </Button>
