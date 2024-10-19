@@ -6,15 +6,15 @@ import { Link as ReactRouterLink } from "react-router-dom";
 import {
   Box,
   Flex,
-  IconButton,
-  Button,
-  useDisclosure,
   Stack,
-  Link as ChakraLink,
+  Button,
   useToken,
+  IconButton,
+  useDisclosure,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
 
-const Links = ["About", "Packages", "Info", "Testimonials", "Gallery"];
+const Links = ["About", "Packages", "Testimonials", "Gallery"];
 
 interface NavLinkProps {
   label: string;
