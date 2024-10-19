@@ -1,26 +1,48 @@
 import * as React from "react";
 import { Welcome } from "../components/Welcome";
 import { About } from "../components/About";
-import { Packages } from "../components/Packages";
-import { Info } from "../components/Info";
 import { Testimonials } from "../components/Testimonials";
 import { Contact } from "../components/Contact";
 import ScrollToAnchor from "../helpers/ScrollToAnchor";
 import { Rates } from "../components/Rates";
-import { Divider } from "@chakra-ui/react";
+
+export enum PackageEnum {
+  Digital = "digital",
+  Complete = "complete",
+  Film = "film",
+}
+
+export enum ExtrasEnum {
+  Film = "film",
+  Extension = "extension",
+  Edits = "edits",
+  Raws = "raws",
+}
+
+export interface ContactForm {
+  name?: string;
+  email: string;
+  message?: string;
+  instagram?: string;
+  extras?: ExtrasEnum;
+  preferredPackage?: PackageEnum;
+  preferredContactMethod?: "instagram" | "email";
+}
 
 export const Home = () => {
   ScrollToAnchor();
+
+  const [contactForm, setContactForm] = React.useState<ContactForm>({
+    email: "",
+  });
 
   return (
     <>
       <Welcome />
       <About />
-      <Rates />
-      <Info />
+      <Rates setContactForm={setContactForm} />
       <Testimonials />
-      <Divider borderColor="green.900" mb="1" />
-      <Contact />
+      <Contact contactForm={contactForm} setContactForm={setContactForm} />
     </>
   );
 };
