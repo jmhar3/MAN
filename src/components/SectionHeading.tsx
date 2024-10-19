@@ -9,16 +9,14 @@ export const SectionHeading = (props: SectionHeadingProps) => {
 
   return (
     <Box position="relative" py="10">
-      <Divider
-        borderColor={colorScheme === "light" ? "green.900" : "brand.100"}
-      />
+      <Divider borderColor="green.900" />
       <AbsoluteCenter
-        bg={colorScheme === "light" ? "brand.100" : "green.900"}
+        backgroundImage="url(/noise.png)"
+        backgroundColor="rgba(244,245,241,0.9)"
+        backgroundBlendMode="lighten"
         px="4"
       >
-        <Heading color={colorScheme === "light" ? "green.900" : "brand.100"}>
-          {label}
-        </Heading>
+        <Heading color="green.900">{label}</Heading>
       </AbsoluteCenter>
     </Box>
   );

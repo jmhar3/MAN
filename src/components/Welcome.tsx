@@ -11,6 +11,7 @@ export const Welcome = () => {
           pr="120px"
           fontSize="6xl"
           fontFamily="Jost"
+          color="brand.100"
           textShadow="1px 1px 2px grey"
         >
           Melbourne
@@ -30,6 +31,7 @@ export const Welcome = () => {
           pl="180px"
           fontSize="6xl"
           fontFamily="Jost"
+          color="brand.100"
           textShadow="1px 1px 2px grey"
         >
           Natural

@@ -11,10 +11,21 @@ import { Showcase } from "./pages/Showcase";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Nav } from "./components/Nav";
+import { baseStyle } from "@chakra-ui/react/dist/types/avatar/avatar";
 
 export const App = () => {
   const theme = extendTheme({
     components: {
+      Button: {
+        baseStyle: {
+          fontFamily: "Jost",
+        },
+      },
+      ButtonGroup: {
+        baseStyle: {
+          fontFamily: "Jost",
+        },
+      },
       Heading: {
         baseStyle: {
           fontWeight: "regular",
@@ -40,8 +51,8 @@ export const App = () => {
       },
     },
     fonts: {
-      heading: `'Imperial Script', handwriting`,
       body: `'Jost', sans-serif`,
+      heading: `'Imperial Script', handwriting`,
     },
     styles: {
       global: {
