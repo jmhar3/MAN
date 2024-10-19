@@ -33,6 +33,27 @@ export const Info = () => {
           >
             <Box as="span" flex="1" textAlign="left">
               <Heading as="i" size="md" fontFamily="Jost">
+                Before you book
+              </Heading>
+            </Box>
+            <AccordionIcon />
+          </AccordionButton>
+          <AccordionPanel pb={4}>
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <AccordionButton
+            _expanded={{ borderBottom: `solid 1px ${brand800}` }}
+          >
+            <Box as="span" flex="1" textAlign="left">
+              <Heading as="i" size="md" fontFamily="Jost">
                 The booking process
               </Heading>
             </Box>
@@ -53,6 +74,27 @@ export const Info = () => {
             <Box as="span" flex="1" textAlign="left">
               <Heading as="i" size="md" fontFamily="Jost">
                 On the day
+              </Heading>
+            </Box>
+            <AccordionIcon />
+          </AccordionButton>
+          <AccordionPanel pb={4}>
+            <Text>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat.
+            </Text>
+          </AccordionPanel>
+        </AccordionItem>
+
+        <AccordionItem>
+          <AccordionButton
+            _expanded={{ borderBottom: `solid 1px ${brand800}` }}
+          >
+            <Box as="span" flex="1" textAlign="left">
+              <Heading as="i" size="md" fontFamily="Jost">
+                After the shoot
               </Heading>
             </Box>
             <AccordionIcon />
