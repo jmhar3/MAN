@@ -1,17 +1,11 @@
 import * as React from "react";
 import "@fontsource/jost";
 import "@fontsource/imperial-script";
-import {
-  border,
-  ChakraProvider,
-  extendTheme,
-  Textarea,
-} from "@chakra-ui/react";
-import { Showcase } from "./pages/Showcase";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { Gallery } from "./pages/Gallery";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Nav } from "./components/Nav";
-import { baseStyle } from "@chakra-ui/react/dist/types/avatar/avatar";
 
 export const App = () => {
   const theme = extendTheme({
@@ -85,7 +79,7 @@ export const App = () => {
           <Route path="/" element={<Home />} />
         </Routes>
         <Routes>
-          <Route path="/gallery" element={<Showcase />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
       </Router>
     </ChakraProvider>
