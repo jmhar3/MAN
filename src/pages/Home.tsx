@@ -32,7 +32,6 @@ export interface ContactForm {
 
 export const Home = () => {
   ScrollToAnchor();
-
   const [contactForm, setContactForm] = React.useState<ContactForm>({});
 
   return (

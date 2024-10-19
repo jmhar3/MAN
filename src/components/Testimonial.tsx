@@ -16,7 +16,7 @@ interface TestimonialProps {
 }
 export const Testimonial = (props: TestimonialProps) => {
   return (
-    <Stack className="embla__slide" flex="0 0 39%" minW="0">
+    <Stack className="embla__slide" flex="0 0 39%" minW="0" pr="8">
       <Img src={props.image} />
       <Flex align="center">
         <Heading w="50%">{props.name}</Heading>

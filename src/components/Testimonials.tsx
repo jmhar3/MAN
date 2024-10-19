@@ -49,7 +49,7 @@ export const Testimonials = () => {
   return (
     <SectionContainer label="Testimonials" colorScheme="light">
       <Box ref={emblaRef} className="embla" overflow="hidden" pb="5">
-        <Flex className="embla__container" gap="8">
+        <Flex className="embla__container">
           {testimonials.map((testimonial) => (
             <Testimonial {...testimonial} />
           ))}
