@@ -5,26 +5,58 @@ import Autoplay from "embla-carousel-autoplay";
 import { DotButton, useDotButton } from "../components/CarouselDots";
 import { GalleryItem } from "../components/GalleryItem";
 
-const gallery = [
+export const gallery = [
   {
     label: "Film",
     displayImage: "/nature.png",
-    images: ["/nature.png"],
+    images: [
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+    ],
   },
   {
     label: "Light Retouching",
     displayImage: "/nature.png",
-    images: ["/nature.png"],
+    images: [
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+    ],
   },
   {
     label: "Complete Retouching",
     displayImage: "/nature.png",
-    images: ["/nature.png"],
+    images: [
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+    ],
   },
   {
     label: "Shibari",
     displayImage: "/nature.png",
-    images: ["/nature.png"],
+    images: [
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+      "/nature.png",
+    ],
   },
 ];
 
@@ -44,14 +76,9 @@ export const Gallery = () => {
       <Stack gap="5" className="embla" align="center">
         <Box ref={emblaRef} className="embla__viewport" overflow="hidden">
           <Flex className="embla__container" align="flex-end">
-            {gallery.map((set, index) => {
-              console.log(`INDEX: ${index}, SELECTED INDEX: ${selectedIndex}`);
-              return (
-                set && (
-                  <GalleryItem {...set} isFocused={selectedIndex === index} />
-                )
-              );
-            })}
+            {gallery.map((set, index) => (
+              <GalleryItem {...set} isFocused={selectedIndex === index} />
+            ))}
           </Flex>
         </Box>
 

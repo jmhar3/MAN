@@ -6,6 +6,7 @@ import { Gallery } from "./pages/Gallery";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Nav } from "./components/Nav";
+import { GalleryView } from "./pages/GalleryView";
 
 export const App = () => {
   const theme = extendTheme({
@@ -80,6 +81,9 @@ export const App = () => {
         </Routes>
         <Routes>
           <Route path="/gallery" element={<Gallery />} />
+        </Routes>
+        <Routes>
+          <Route path="/gallery/:set" element={<GalleryView />} />
         </Routes>
       </Router>
     </ChakraProvider>
