@@ -1,4 +1,7 @@
 import * as React from "react";
+import { CheckCircleIcon, InfoOutlineIcon } from "@chakra-ui/icons";
+import { useNavigate } from "react-router-dom";
+
 import {
   Divider,
   Flex,
@@ -10,15 +13,17 @@ import {
   List,
   ListIcon,
   ListItem,
-  useBoolean,
   Button,
   Img,
-  Tag,
   Tooltip,
 } from "@chakra-ui/react";
+
 import { SectionContainer } from "./SectionContainer";
-import { CheckCircleIcon, InfoOutlineIcon } from "@chakra-ui/icons";
-import { useNavigate } from "react-router-dom";
+import { ContactForm, PackageEnum } from "../pages/Home";
+
+export interface RatesProps {
+  setContactForm: React.Dispatch<React.SetStateAction<ContactForm>>;
+}
 
 const packages = [
   {
@@ -53,7 +58,7 @@ const Extra = (props: { label: string; price: string }) => {
   );
 };
 
-export const Rates = () => {
+export const Rates = (props: RatesProps) => {
   const [green900] = useToken("colors", ["green.900"]);
 
   return (
@@ -62,12 +67,12 @@ export const Rates = () => {
         <Stack
           py="4"
           gap="6"
-          w="60%"
+          w="70%"
           align="center"
           divider={<StackDivider borderColor="green.900" />}
         >
           {packages.map((item, index) => (
-            <Package {...item} index={index} />
+            <Package {...item} {...props} index={index} />
           ))}
         </Stack>
         <Stack
@@ -90,7 +95,7 @@ export const Rates = () => {
             justifyContent="space-between"
             divider={<StackDivider borderColor="green.900" />}
           >
-            <Extra label="Add on film" price="$50" />
+            <Extra label="Add on a roll of film" price="$50" />
             <Extra
               label="30 mins extension w 5 additional images"
               price="$150"
@@ -107,7 +112,7 @@ export const Rates = () => {
   );
 };
 
-export interface PackageProps {
+export interface PackageProps extends RatesProps {
   title: string;
   description: string;
   included: string[];
@@ -116,12 +121,17 @@ export interface PackageProps {
 }
 
 export const Package = (props: PackageProps) => {
-  const { index, title, description, included, rate } = props;
+  const { index, title, description, included, rate, setContactForm } = props;
 
   const [green900] = useToken("colors", ["green.900"]);
   const navigate = useNavigate();
 
   const bookPackage = () => {
+    setContactForm((formValues) => ({
+      ...formValues,
+      preferredPackage: title.toLowerCase() as PackageEnum,
+    }));
+
     navigate("/#contact");
   };
 
@@ -133,13 +143,23 @@ export const Package = (props: PackageProps) => {
     <Flex gap="10" align="center">
       {isOdd(index) && <Img src="/nature.png" boxSize="sm" objectFit="cover" />}
 
-      <Stack gap="3" align="center" w="100%">
+      <Stack gap="5" align="center" justify="center" h="100%" w="100%">
         <Stack py="3" gap="5">
           <Stack gap="1">
-            <Heading size="xl">{title}</Heading>
-            <Text as="i" fontSize="lg">
-              {description}
-            </Text>
+            <Heading
+              as="i"
+              size="lg"
+              fontFamily="Jost"
+              _firstLetter={{
+                mr: "-0.5",
+                fontSize: "6xl",
+                fontFamily: "Imperial Script",
+                fontStyle: "normal",
+              }}
+            >
+              {title}
+            </Heading>
+            <Text fontSize="lg">{description}</Text>
           </Stack>
 
           <List spacing={3}>
