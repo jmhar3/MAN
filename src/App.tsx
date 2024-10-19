@@ -46,7 +46,9 @@ export const App = () => {
     styles: {
       global: {
         body: {
-          bg: "#f4f5f1",
+          backgroundImage: "url(/noise.png)",
+          backgroundColor: "rgba(244,245,241,0.9)",
+          backgroundBlendMode: "lighten",
         },
       },
     },
