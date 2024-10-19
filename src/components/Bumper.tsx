@@ -4,9 +4,9 @@ export const Bumper = (props: { id: string }) => {
   return (
     <Box
       id={props.id}
-      height="66px"
+      height="64px"
       display="block"
-      marginTop="-66px"
+      marginTop="-64px"
       visibility="hidden"
     />
   );
