@@ -34,8 +34,7 @@ const NavLink = (props: NavLinkProps) => {
           : `/#${label.toLowerCase()}`
       }
       _hover={{
-        textDecoration: "none",
-        borderBottom: "1px solid green",
+        textDecoration: "underline",
       }}
     >
       {label}
@@ -55,8 +54,9 @@ export const Nav = () => {
       w="100%"
       zIndex="999"
       position="fixed"
+      backdropFilter="blur(3px)"
       borderBottom={`solid 1px ${green900}`}
-      backgroundColor="rgba(244,245,241,0.9)"
+      backgroundColor="rgba(244,245,241,0.85)"
     >
       <Flex p="4" alignItems="center" justifyContent="space-between">
         <IconButton

@@ -69,7 +69,7 @@ export const Rates = (props: RatesProps) => {
           gap="6"
           w="70%"
           align="center"
-          divider={<StackDivider borderColor="green.900" />}
+          divider={<StackDivider borderColor="brand.800" />}
         >
           {packages.map((item, index) => (
             <Package {...item} {...props} index={index} />
@@ -93,7 +93,7 @@ export const Rates = (props: RatesProps) => {
             align="center"
             justify="center"
             justifyContent="space-between"
-            divider={<StackDivider borderColor="green.900" />}
+            divider={<StackDivider borderColor="brand.800" />}
           >
             <Extra label="Add on a roll of film" price="$50" />
             <Extra
