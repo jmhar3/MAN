@@ -4,7 +4,7 @@ import { Info } from "./Info";
 
 export const About = () => {
   return (
-    <Flex gap="6" px="10" pt="10" id="about">
+    <Flex gap="6" px="10" pt="10">
       <Img src="/nature.png" w="xl" />
 
       <Stack>

@@ -54,9 +54,9 @@ export const Nav = () => {
       left="0"
       w="100%"
       zIndex="999"
-      bg="brand.100"
       position="fixed"
       borderBottom={`solid 1px ${green900}`}
+      backgroundColor="rgba(244,245,241,0.9)"
     >
       <Flex p="4" alignItems="center" justifyContent="space-between">
         <IconButton

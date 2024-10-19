@@ -5,6 +5,7 @@ import { Testimonials } from "../components/Testimonials";
 import { Contact } from "../components/Contact";
 import ScrollToAnchor from "../helpers/ScrollToAnchor";
 import { Rates } from "../components/Rates";
+import { Bumper } from "../components/Bumper";
 
 export enum PackageEnum {
   Digital = "digital",
@@ -40,9 +41,13 @@ export const Home = () => {
   return (
     <>
       <Welcome />
+      <Bumper id="about" />
       <About />
+      <Bumper id="packages" />
       <Rates setContactForm={setContactForm} />
+      <Bumper id="testimonials" />
       <Testimonials />
+      <Bumper id="contact" />
       <Contact contactForm={contactForm} setContactForm={setContactForm} />
     </>
   );

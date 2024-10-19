@@ -78,7 +78,7 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
   };
 
   return (
-    <Box bg="green.900" id="contact" py="1">
+    <Box bg="green.900" py="1">
       <Stack w="100%" p="10" gap="6">
         <Flex
           p="6"
