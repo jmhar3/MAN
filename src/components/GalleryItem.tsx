@@ -11,16 +11,16 @@ export interface GalleryItemProps {
 export const GalleryItem = (props: GalleryItemProps) => {
   return (
     <Box
-      className="embla__slide"
-      minW="0"
       pr="5"
-      flex={props.isFocused ? "0 0 60%" : "0 0 40%"}
+      minW="0"
+      className="embla__slide"
+      flex={props.isFocused ? "0 0 55%" : "0 0 35%"}
     >
       <Stack
         className="embla__slide__container"
         flex="0 0 50%"
         minW="0"
-        gap="3"
+        gap="1"
       >
         <Heading
           as="i"

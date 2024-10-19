@@ -3,7 +3,7 @@ import { Box, Flex, Heading, Stack } from "@chakra-ui/react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { DotButton, useDotButton } from "../components/CarouselDots";
-import { GalleryItem } from "../components/GalleryItem"; 
+import { GalleryItem } from "../components/GalleryItem";
 
 const gallery = [
   {
@@ -21,7 +21,6 @@ const gallery = [
     displayImage: "/nature.png",
     images: ["/nature.png"],
   },
-  ,
   {
     label: "Shibari",
     displayImage: "/nature.png",
@@ -45,12 +44,14 @@ export const Gallery = () => {
       <Stack gap="5" className="embla" align="center">
         <Box ref={emblaRef} className="embla__viewport" overflow="hidden">
           <Flex className="embla__container" align="flex-end">
-            {gallery.map(
-              (set, index) =>
+            {gallery.map((set, index) => {
+              console.log(`INDEX: ${index}, SELECTED INDEX: ${selectedIndex}`);
+              return (
                 set && (
                   <GalleryItem {...set} isFocused={selectedIndex === index} />
                 )
-            )}
+              );
+            })}
           </Flex>
         </Box>
 
