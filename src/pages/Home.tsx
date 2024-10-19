@@ -22,10 +22,10 @@ export enum ExtrasEnum {
 
 export interface ContactForm {
   name?: string;
-  email: string;
+  email?: string;
   message?: string;
   instagram?: string;
-  extras: ExtrasEnum[];
+  extras?: ExtrasEnum[];
   preferredPackage?: PackageEnum;
   preferredContactMethod?: "instagram" | "email";
 }
@@ -33,10 +33,7 @@ export interface ContactForm {
 export const Home = () => {
   ScrollToAnchor();
 
-  const [contactForm, setContactForm] = React.useState<ContactForm>({
-    email: "",
-    extras: ["edits", "film"] as ExtrasEnum[],
-  });
+  const [contactForm, setContactForm] = React.useState<ContactForm>({});
 
   return (
     <>

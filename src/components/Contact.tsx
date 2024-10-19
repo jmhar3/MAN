@@ -2,13 +2,13 @@ import * as React from "react";
 import { EmailIcon } from "@chakra-ui/icons";
 import emailjs from "@emailjs/browser";
 import { ContactForm, ExtrasEnum, PackageEnum } from "../pages/Home";
+import { BiLogoGmail, BiLogoInstagram, BiSolidPencil } from "react-icons/bi";
 
 import {
   AbsoluteCenter,
   Box,
   Button,
   ButtonGroup,
-  Checkbox,
   Divider,
   Flex,
   FormControl,
@@ -16,8 +16,6 @@ import {
   FormLabel,
   Heading,
   Input,
-  Radio,
-  RadioGroup,
   Stack,
   StackDivider,
   Text,
@@ -31,21 +29,42 @@ export interface ContactProps {
   setContactForm: React.Dispatch<React.SetStateAction<ContactForm>>;
 }
 
-export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
-  const { extras, email, message, preferredPackage, preferredContactMethod } =
-    contactForm;
+export const Contact = (props: ContactProps) => {
+  const { contactForm, setContactForm } = props;
+
+  const {
+    name,
+    email,
+    message,
+    instagram,
+    extras = [],
+    preferredPackage,
+    preferredContactMethod,
+  } = contactForm;
 
   const toast = useToast();
   const [brand200] = useToken("colors", ["brand.200"]);
   const [isSubmitting, setIsSubmitting] = React.useState(false);
-
-  const isEmailError = email?.length === 0;
-  const isMessageError = message?.length === 0;
+  const [emailError, setEmailError] = React.useState<string | null>(null);
+  const [messageError, setMessageError] = React.useState<string | null>(null);
 
   const sendEmail = (e: React.SyntheticEvent) => {
     e.persist();
     e.preventDefault();
     setIsSubmitting(true);
+
+    if (email === undefined || message === undefined) {
+      email === undefined &&
+        setEmailError("Enter the email you'd like to me to contact you on.");
+
+      message === undefined &&
+        setMessageError(
+          "Enter a message including any questions or booking details."
+        );
+
+      return;
+    }
+
     emailjs
       .sendForm(
         process.env.REACT_APP_SERVICE_ID!,
@@ -62,7 +81,7 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
             duration: 5000,
           });
           setIsSubmitting(false);
-          setContactForm({ email: "", extras: [] });
+          setContactForm({});
         },
         (error) => {
           console.error(error);
@@ -75,46 +94,59 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
           setIsSubmitting(false);
         }
       );
+
+    setEmailError(null);
+    setMessageError(null);
   };
+
+  const editExtra = (altExtra: ExtrasEnum) => ({
+    extras: extras.find((extra) => extra === altExtra)
+      ? extras.filter((extra) => extra === altExtra)
+      : [...extras, altExtra],
+  });
 
   return (
     <Box bg="green.900" py="1">
       <Stack w="100%" p="10" gap="6">
-        <Flex
+        <Stack
           p="6"
           px="8"
           rounded="md"
           align="center"
+          direction="row"
+          backgroundBlendMode="lighten"
+          border={`solid 1px ${brand200}`}
           justifyContent="space-between"
           backgroundImage="url(/noise.png)"
           backgroundColor="rgba(244,245,241,0.9)"
-          backgroundBlendMode="lighten"
-          border={`solid 1px ${brand200}`}
+          divider={<StackDivider borderColor="brand.800" />}
         >
           <Heading fontFamily="Jost" fontSize="xl">
             Want to know more? Get in touch
           </Heading>
           <Flex gap="3" align="center">
-            <EmailIcon />
+            <BiLogoGmail />
             <Text>NOAH@MELBOURNEARTNATURAL.COM</Text>
           </Flex>
           <Flex gap="3" align="center">
-            <EmailIcon />
+            <BiLogoInstagram />
             <Text>@MELBOURNEARTNATURAL</Text>
           </Flex>
           <Flex gap="3" align="center">
-            <EmailIcon />
+            <BiSolidPencil />
             <Text>OR USE THE FORM BELOW...</Text>
           </Flex>
-        </Flex>
+        </Stack>
 
         <Box>
           <Flex align="center" gap="5" pb="3">
-            <Heading color="brand.100">Contact</Heading>
+            <Heading color="brand.100" minW="12%">
+              Send an inquiry
+            </Heading>
             <Divider borderColor="brand.100" />
           </Flex>
 
-          <FormControl isInvalid={isEmailError || isMessageError}>
+          <FormControl>
             <Stack
               py="3"
               gap="6"
@@ -122,7 +154,19 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
             >
               <Stack direction="row" gap="0" justifyContent="space-between">
                 <FormLabel color="brand.100">Preferred Name</FormLabel>
-                <Input type="name" bg="brand.100" maxW="60%" />
+                <Input
+                  type="name"
+                  bg="brand.100"
+                  maxW="60%"
+                  border="0"
+                  value={name}
+                  onChange={(e) =>
+                    setContactForm((data: ContactForm) => ({
+                      ...data,
+                      name: e.target.value,
+                    }))
+                  }
+                />
               </Stack>
 
               <Stack gap="5">
@@ -131,57 +175,35 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
                     Preferred Contact Method
                   </FormLabel>
 
-                  <ButtonGroup size="sm" isAttached variant="outline">
-                    <Button
-                      onClick={() =>
-                        setContactForm((data) => ({
-                          ...data,
-                          preferredContactMethod: "email",
-                        }))
-                      }
-                      bg={
-                        preferredContactMethod === "email"
-                          ? "brand.200"
-                          : "green.900"
-                      }
-                      color={
-                        preferredContactMethod === "email"
-                          ? "green.900"
-                          : "brand.200"
-                      }
-                      _hover={{ bg: "brand.200", color: "green.900" }}
-                    >
-                      Email
-                    </Button>
-
-                    <Button
-                      onClick={() =>
-                        setContactForm((data) => ({
-                          ...data,
-                          preferredContactMethod: "instagram",
-                        }))
-                      }
-                      bg={
-                        preferredContactMethod === "instagram"
-                          ? "brand.200"
-                          : "green.900"
-                      }
-                      color={
-                        preferredContactMethod === "instagram"
-                          ? "green.900"
-                          : "brand.200"
-                      }
-                      _hover={{ bg: "brand.200", color: "green.900" }}
-                    >
-                      Instagram
-                    </Button>
+                  <ButtonGroup size="sm" variant="outline">
+                    <FormButton
+                      {...props}
+                      label="Email"
+                      newFormData={{ preferredContactMethod: "email" }}
+                      isSelected={preferredContactMethod === "email"}
+                    />
+                    <FormButton
+                      {...props}
+                      label="Instagram"
+                      newFormData={{ preferredContactMethod: "instagram" }}
+                      isSelected={preferredContactMethod === "instagram"}
+                    />
                   </ButtonGroup>
                 </Stack>
 
                 <Stack direction="row" gap="0" justifyContent="space-between">
                   <FormLabel color="brand.100">Instagram Username</FormLabel>
                   <Stack gap="0" minW="60%">
-                    <Input bg="brand.100" />
+                    <Input
+                      bg="brand.100"
+                      value={instagram}
+                      onChange={(e) =>
+                        setContactForm((data: ContactForm) => ({
+                          ...data,
+                          instagram: e.target.value,
+                        }))
+                      }
+                    />
                   </Stack>
                 </Stack>
 
@@ -199,9 +221,9 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
                         }))
                       }
                     />
-                    {isEmailError && (
+                    {emailError && (
                       <FormHelperText color="brand.100">
-                        Enter the email you'd like to me to contact you on.
+                        {emailError}
                       </FormHelperText>
                     )}
                   </Stack>
@@ -212,67 +234,24 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
                 <Stack direction="row" gap="0" justifyContent="space-between">
                   <FormLabel color="brand.100">Preferred Package</FormLabel>
                   <ButtonGroup size="sm" variant="outline">
-                    <Button
-                      onClick={() =>
-                        setContactForm((data) => ({
-                          ...data,
-                          preferredPackage: PackageEnum.Digital,
-                        }))
-                      }
-                      bg={
-                        preferredPackage === "digital"
-                          ? "brand.200"
-                          : "green.900"
-                      }
-                      color={
-                        preferredPackage === "digital"
-                          ? "green.900"
-                          : "brand.200"
-                      }
-                      _hover={{ bg: "brand.200", color: "green.900" }}
-                    >
-                      Digital
-                    </Button>
-
-                    <Button
-                      onClick={() =>
-                        setContactForm((data) => ({
-                          ...data,
-                          preferredPackage: PackageEnum.Film,
-                        }))
-                      }
-                      bg={
-                        preferredPackage === "film" ? "brand.200" : "green.900"
-                      }
-                      color={
-                        preferredPackage === "film" ? "green.900" : "brand.200"
-                      }
-                      _hover={{ bg: "brand.200", color: "green.900" }}
-                    >
-                      Film
-                    </Button>
-
-                    <Button
-                      onClick={() =>
-                        setContactForm((data) => ({
-                          ...data,
-                          preferredPackage: PackageEnum.Complete,
-                        }))
-                      }
-                      bg={
-                        preferredPackage === "complete"
-                          ? "brand.200"
-                          : "green.900"
-                      }
-                      color={
-                        preferredPackage === "complete"
-                          ? "green.900"
-                          : "brand.200"
-                      }
-                      _hover={{ bg: "brand.200", color: "green.900" }}
-                    >
-                      Complete
-                    </Button>
+                    <FormButton
+                      {...props}
+                      label="Digital"
+                      newFormData={{ preferredPackage: PackageEnum.Digital }}
+                      isSelected={preferredPackage === "digital"}
+                    />
+                    <FormButton
+                      {...props}
+                      label="Film"
+                      newFormData={{ preferredPackage: PackageEnum.Film }}
+                      isSelected={preferredPackage === "film"}
+                    />
+                    <FormButton
+                      {...props}
+                      label="Complete"
+                      newFormData={{ preferredPackage: PackageEnum.Complete }}
+                      isSelected={preferredPackage === "complete"}
+                    />
                   </ButtonGroup>
                 </Stack>
 
@@ -289,10 +268,9 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
                         }))
                       }
                     />
-                    {isMessageError && (
+                    {messageError && (
                       <FormHelperText color="brand.100">
-                        Enter a message including any questions or booking
-                        details.
+                        {messageError}
                       </FormHelperText>
                     )}
                   </Stack>
@@ -306,69 +284,30 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
                 >
                   <FormLabel color="brand.100">Interested in extras</FormLabel>
                   <ButtonGroup size="sm" variant="outline">
-                    <Button
-                      bg={
-                        extras.find((extra) => extra === "film")
-                          ? "brand.200"
-                          : "green.900"
-                      }
-                      color={
-                        extras.find((extra) => extra === "film")
-                          ? "green.900"
-                          : "brand.200"
-                      }
-                      _hover={{ bg: "brand.200", color: "green.900" }}
-                    >
-                      Digital
-                    </Button>
-
-                    <Button
-                      bg={
-                        extras.find((extra) => extra === "extension")
-                          ? "brand.200"
-                          : "green.900"
-                      }
-                      color={
-                        extras.find((extra) => extra === "extension")
-                          ? "green.900"
-                          : "brand.200"
-                      }
-                      _hover={{ bg: "brand.200", color: "green.900" }}
-                    >
-                      30 mins extension
-                    </Button>
-
-                    <Button
-                      bg={
-                        extras.find((extra) => extra === "edits")
-                          ? "brand.200"
-                          : "green.900"
-                      }
-                      color={
-                        extras.find((extra) => extra === "edits")
-                          ? "green.900"
-                          : "brand.200"
-                      }
-                      _hover={{ bg: "brand.200", color: "green.900" }}
-                    >
-                      Additional edits
-                    </Button>
-
-                    <Button
-                      bg={
-                        extras.find((extra) => extra === "raws")
-                          ? "brand.200"
-                          : "green.900"
-                      }
-                      color={
-                        extras.find((extra) => extra === "raws")
-                          ? "green.900"
-                          : "brand.200"
-                      }
-                      _hover={{ bg: "brand.200", color: "green.900" }}
-                    >
-                      All RAWs
-                    </Button>
+                    <FormButton
+                      {...props}
+                      label="Roll of film"
+                      newFormData={editExtra(ExtrasEnum.Film)}
+                      isSelected={extras.includes(ExtrasEnum.Film)}
+                    />
+                    <FormButton
+                      {...props}
+                      label="30 mins extension"
+                      newFormData={editExtra(ExtrasEnum.Extension)}
+                      isSelected={extras.includes(ExtrasEnum.Extension)}
+                    />
+                    <FormButton
+                      {...props}
+                      label="Additional edits"
+                      newFormData={editExtra(ExtrasEnum.Edits)}
+                      isSelected={extras.includes(ExtrasEnum.Edits)}
+                    />
+                    <FormButton
+                      {...props}
+                      label="All RAWs"
+                      newFormData={editExtra(ExtrasEnum.Raws)}
+                      isSelected={extras.includes(ExtrasEnum.Raws)}
+                    />
                   </ButtonGroup>
                 </Stack>
               </Stack>
@@ -396,3 +335,26 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
     </Box>
   );
 };
+
+interface FormButtonProps extends ContactProps {
+  newFormData: { [key: string]: string | string[] };
+  isSelected: boolean;
+  label: string;
+}
+
+const FormButton = (props: FormButtonProps) => (
+  <Button
+    rounded="full"
+    onClick={() =>
+      props.setContactForm((data) => ({
+        ...data,
+        ...props.newFormData,
+      }))
+    }
+    bg={props.isSelected ? "brand.200" : "green.900"}
+    color={props.isSelected ? "green.900" : "brand.200"}
+    _hover={{ bg: "brand.200", color: "green.900" }}
+  >
+    {props.label}
+  </Button>
+);
