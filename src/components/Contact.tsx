@@ -1,12 +1,13 @@
 import * as React from "react";
 import { EmailIcon } from "@chakra-ui/icons";
 import emailjs from "@emailjs/browser";
-import { ContactForm } from "../pages/Home";
+import { ContactForm, ExtrasEnum, PackageEnum } from "../pages/Home";
 
 import {
   AbsoluteCenter,
   Box,
   Button,
+  ButtonGroup,
   Checkbox,
   Divider,
   Flex,
@@ -31,7 +32,8 @@ export interface ContactProps {
 }
 
 export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
-  const { email, message, preferredPackage } = contactForm;
+  const { extras, email, message, preferredPackage, preferredContactMethod } =
+    contactForm;
 
   const toast = useToast();
   const [brand200] = useToken("colors", ["brand.200"]);
@@ -60,7 +62,7 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
             duration: 5000,
           });
           setIsSubmitting(false);
-          setContactForm({ email: "" });
+          setContactForm({ email: "", extras: [] });
         },
         (error) => {
           console.error(error);
@@ -77,12 +79,36 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
 
   return (
     <Box bg="green.900" id="contact" py="1">
-      <Flex w="100%" p="10" gap="10">
-        <Stack border={`solid 1px ${brand200}`} w="25%" rounded="md">
-          <Text>Email</Text>
-        </Stack>
+      <Stack w="100%" p="10" gap="6">
+        <Flex
+          p="6"
+          px="8"
+          rounded="md"
+          align="center"
+          justifyContent="space-between"
+          backgroundImage="url(/noise.png)"
+          backgroundColor="rgba(244,245,241,0.9)"
+          backgroundBlendMode="lighten"
+          border={`solid 1px ${brand200}`}
+        >
+          <Heading fontFamily="Jost" fontSize="xl">
+            Want to know more? Get in touch
+          </Heading>
+          <Flex gap="3" align="center">
+            <EmailIcon />
+            <Text>NOAH@MELBOURNEARTNATURAL.COM</Text>
+          </Flex>
+          <Flex gap="3" align="center">
+            <EmailIcon />
+            <Text>@MELBOURNEARTNATURAL</Text>
+          </Flex>
+          <Flex gap="3" align="center">
+            <EmailIcon />
+            <Text>OR USE THE FORM BELOW...</Text>
+          </Flex>
+        </Flex>
 
-        <Box w="75%">
+        <Box>
           <Flex align="center" gap="5" pb="3">
             <Heading color="brand.100">Contact</Heading>
             <Divider borderColor="brand.100" />
@@ -104,16 +130,52 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
                   <FormLabel color="brand.100">
                     Preferred Contact Method
                   </FormLabel>
-                  <RadioGroup defaultValue="2">
-                    <Stack spacing={5} direction="row">
-                      <Radio colorScheme="red" value="email">
-                        <Text color="brand.100">Email</Text>
-                      </Radio>
-                      <Radio colorScheme="red" value="instagram">
-                        <Text color="brand.100">Instagram</Text>
-                      </Radio>
-                    </Stack>
-                  </RadioGroup>
+
+                  <ButtonGroup size="sm" isAttached variant="outline">
+                    <Button
+                      onClick={() =>
+                        setContactForm((data) => ({
+                          ...data,
+                          preferredContactMethod: "email",
+                        }))
+                      }
+                      bg={
+                        preferredContactMethod === "email"
+                          ? "brand.200"
+                          : "green.900"
+                      }
+                      color={
+                        preferredContactMethod === "email"
+                          ? "green.900"
+                          : "brand.200"
+                      }
+                      _hover={{ bg: "brand.200", color: "green.900" }}
+                    >
+                      Email
+                    </Button>
+
+                    <Button
+                      onClick={() =>
+                        setContactForm((data) => ({
+                          ...data,
+                          preferredContactMethod: "instagram",
+                        }))
+                      }
+                      bg={
+                        preferredContactMethod === "instagram"
+                          ? "brand.200"
+                          : "green.900"
+                      }
+                      color={
+                        preferredContactMethod === "instagram"
+                          ? "green.900"
+                          : "brand.200"
+                      }
+                      _hover={{ bg: "brand.200", color: "green.900" }}
+                    >
+                      Instagram
+                    </Button>
+                  </ButtonGroup>
                 </Stack>
 
                 <Stack direction="row" gap="0" justifyContent="space-between">
@@ -149,19 +211,69 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
               <Stack>
                 <Stack direction="row" gap="0" justifyContent="space-between">
                   <FormLabel color="brand.100">Preferred Package</FormLabel>
-                  <RadioGroup defaultValue="2" value={preferredPackage}>
-                    <Stack spacing={5} direction="row">
-                      <Radio colorScheme="red" value="digital">
-                        <Text color="brand.100">Digital</Text>
-                      </Radio>
-                      <Radio colorScheme="red" value="film">
-                        <Text color="brand.100">Film</Text>
-                      </Radio>
-                      <Radio colorScheme="red" value="complete">
-                        <Text color="brand.100">Complete</Text>
-                      </Radio>
-                    </Stack>
-                  </RadioGroup>
+                  <ButtonGroup size="sm" variant="outline">
+                    <Button
+                      onClick={() =>
+                        setContactForm((data) => ({
+                          ...data,
+                          preferredPackage: PackageEnum.Digital,
+                        }))
+                      }
+                      bg={
+                        preferredPackage === "digital"
+                          ? "brand.200"
+                          : "green.900"
+                      }
+                      color={
+                        preferredPackage === "digital"
+                          ? "green.900"
+                          : "brand.200"
+                      }
+                      _hover={{ bg: "brand.200", color: "green.900" }}
+                    >
+                      Digital
+                    </Button>
+
+                    <Button
+                      onClick={() =>
+                        setContactForm((data) => ({
+                          ...data,
+                          preferredPackage: PackageEnum.Film,
+                        }))
+                      }
+                      bg={
+                        preferredPackage === "film" ? "brand.200" : "green.900"
+                      }
+                      color={
+                        preferredPackage === "film" ? "green.900" : "brand.200"
+                      }
+                      _hover={{ bg: "brand.200", color: "green.900" }}
+                    >
+                      Film
+                    </Button>
+
+                    <Button
+                      onClick={() =>
+                        setContactForm((data) => ({
+                          ...data,
+                          preferredPackage: PackageEnum.Complete,
+                        }))
+                      }
+                      bg={
+                        preferredPackage === "complete"
+                          ? "brand.200"
+                          : "green.900"
+                      }
+                      color={
+                        preferredPackage === "complete"
+                          ? "green.900"
+                          : "brand.200"
+                      }
+                      _hover={{ bg: "brand.200", color: "green.900" }}
+                    >
+                      Complete
+                    </Button>
+                  </ButtonGroup>
                 </Stack>
 
                 <Stack direction="row" gap="0" justifyContent="space-between">
@@ -193,20 +305,71 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
                   justifyContent="space-between"
                 >
                   <FormLabel color="brand.100">Interested in extras</FormLabel>
-                  <Stack spacing={5} direction="row">
-                    <Checkbox colorScheme="red" value="film">
-                      <Text color="brand.100">Film</Text>
-                    </Checkbox>
-                    <Checkbox colorScheme="red" value="extension">
-                      <Text color="brand.100">30 min extension</Text>
-                    </Checkbox>
-                    <Checkbox colorScheme="red" value="additional edits">
-                      <Text color="brand.100">Additional edits</Text>
-                    </Checkbox>
-                    <Checkbox colorScheme="red" value="RAWs">
-                      <Text color="brand.100">All RAWs</Text>
-                    </Checkbox>
-                  </Stack>
+                  <ButtonGroup size="sm" variant="outline">
+                    <Button
+                      bg={
+                        extras.find((extra) => extra === "film")
+                          ? "brand.200"
+                          : "green.900"
+                      }
+                      color={
+                        extras.find((extra) => extra === "film")
+                          ? "green.900"
+                          : "brand.200"
+                      }
+                      _hover={{ bg: "brand.200", color: "green.900" }}
+                    >
+                      Digital
+                    </Button>
+
+                    <Button
+                      bg={
+                        extras.find((extra) => extra === "extension")
+                          ? "brand.200"
+                          : "green.900"
+                      }
+                      color={
+                        extras.find((extra) => extra === "extension")
+                          ? "green.900"
+                          : "brand.200"
+                      }
+                      _hover={{ bg: "brand.200", color: "green.900" }}
+                    >
+                      30 mins extension
+                    </Button>
+
+                    <Button
+                      bg={
+                        extras.find((extra) => extra === "edits")
+                          ? "brand.200"
+                          : "green.900"
+                      }
+                      color={
+                        extras.find((extra) => extra === "edits")
+                          ? "green.900"
+                          : "brand.200"
+                      }
+                      _hover={{ bg: "brand.200", color: "green.900" }}
+                    >
+                      Additional edits
+                    </Button>
+
+                    <Button
+                      bg={
+                        extras.find((extra) => extra === "raws")
+                          ? "brand.200"
+                          : "green.900"
+                      }
+                      color={
+                        extras.find((extra) => extra === "raws")
+                          ? "green.900"
+                          : "brand.200"
+                      }
+                      _hover={{ bg: "brand.200", color: "green.900" }}
+                    >
+                      All RAWs
+                    </Button>
+                  </ButtonGroup>
                 </Stack>
               </Stack>
             </Stack>
@@ -229,7 +392,7 @@ export const Contact = ({ contactForm, setContactForm }: ContactProps) => {
             </Box>
           </FormControl>
         </Box>
-      </Flex>
+      </Stack>
     </Box>
   );
 };

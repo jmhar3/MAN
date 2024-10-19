@@ -24,7 +24,7 @@ export interface ContactForm {
   email: string;
   message?: string;
   instagram?: string;
-  extras?: ExtrasEnum;
+  extras: ExtrasEnum[];
   preferredPackage?: PackageEnum;
   preferredContactMethod?: "instagram" | "email";
 }
@@ -34,6 +34,7 @@ export const Home = () => {
 
   const [contactForm, setContactForm] = React.useState<ContactForm>({
     email: "",
+    extras: ["edits", "film"] as ExtrasEnum[],
   });
 
   return (
