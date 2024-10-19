@@ -1,7 +1,12 @@
 import * as React from "react";
 import "@fontsource/jost";
 import "@fontsource/imperial-script";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import {
+  border,
+  ChakraProvider,
+  extendTheme,
+  Textarea,
+} from "@chakra-ui/react";
 import { Showcase } from "./pages/Showcase";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
@@ -13,6 +18,24 @@ export const App = () => {
       Heading: {
         baseStyle: {
           fontWeight: "regular",
+          color: "green.900",
+        },
+      },
+      Text: {
+        baseStyle: {
+          color: "green.900",
+        },
+      },
+      Input: {
+        baseStyle: {
+          borderColor: "brand.200",
+          bg: "brand.200",
+        },
+      },
+      Textarea: {
+        baseStyle: {
+          borderColor: "brand.200",
+          bg: "brand.200",
         },
       },
     },
@@ -34,6 +57,8 @@ export const App = () => {
         // ...
         400: "#e7f3f3",
         500: "#d6e7e6",
+        // ...
+        800: "#d8e8e1",
       },
     },
   });
