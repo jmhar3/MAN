@@ -20,7 +20,7 @@ export const Testimonial = (props: TestimonialProps) => {
       <Img src={props.image} />
       <Flex align="center">
         <Heading w="50%">{props.name}</Heading>
-        <Divider borderColor="green.900" />
+        <Divider borderColor="brand.800" />
       </Flex>
       <Text>{props.testimonial}</Text>
     </Stack>

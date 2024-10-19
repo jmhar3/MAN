@@ -5,6 +5,7 @@ import { SectionContainer } from "./SectionContainer";
 import { Testimonial } from "./Testimonial";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
+import { DotButton, useDotButton } from "./CarouselDots";
 
 const testimonials = [
   {
@@ -40,7 +41,10 @@ const testimonials = [
 ];
 
 export const Testimonials = () => {
-  const [emblaRef] = useEmblaCarousel({}, [Autoplay()]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({}, [Autoplay()]);
+
+  const { selectedIndex, scrollSnaps, onDotButtonClick } =
+    useDotButton(emblaApi);
 
   return (
     <SectionContainer label="Testimonials" colorScheme="light">
@@ -51,6 +55,16 @@ export const Testimonials = () => {
           ))}
         </Flex>
       </Box>
+      <Flex className="embla__dots">
+        {scrollSnaps.map((_, index) => (
+          <DotButton
+            key={index}
+            isSelected={index === selectedIndex}
+            onClick={() => onDotButtonClick(index)}
+            className="embla__dot"
+          />
+        ))}
+      </Flex>
     </SectionContainer>
   );
 };
