@@ -6,11 +6,12 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
   ModalBody,
-  ModalCloseButton,
   useDisclosure,
   Button,
+  Heading,
+  Flex,
+  Divider,
 } from "@chakra-ui/react";
 
 interface TestimonialProps {
@@ -35,18 +36,18 @@ export const TestimonialModal = (props: TestimonialProps) => {
       >
         <ModalOverlay />
         <ModalContent
-          p="2"
           backdropFilter="blur(2px)"
           backgroundColor="rgba(244,245,241,0.85)"
         >
-          <ModalHeader>{props.name}</ModalHeader>
-          <ModalBody>
-            <Stack gap="5" pb="3">
-              <Img src={props.image} />
-              {props.testimonial.map((paragraph) => (
-                <Text>{paragraph}</Text>
-              ))}
-            </Stack>
+          <ModalBody as={Stack} gap="4" p="5">
+            <Img src={props.image} />
+            <Flex align="center" gap="5">
+              <Heading color="green.900">{props.name}</Heading>
+              <Divider borderColor="green.900" />
+            </Flex>
+            {props.testimonial.map((paragraph) => (
+              <Text>{paragraph}</Text>
+            ))}
           </ModalBody>
         </ModalContent>
       </Modal>
