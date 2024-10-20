@@ -41,7 +41,9 @@ const testimonials = [
 ];
 
 export const Testimonials = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true }, [Autoplay()]);
+  const [emblaRef, emblaApi] = useEmblaCarousel({}, [
+    Autoplay({ stopOnMouseEnter: true }),
+  ]);
 
   const { selectedIndex, scrollSnaps, onDotButtonClick } =
     useDotButton(emblaApi);
