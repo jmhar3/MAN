@@ -42,21 +42,39 @@ export const ContactForm = (props: ContactFormProps) => {
   const [isSubmitting, setIsSubmitting] = React.useState(false);
   const [emailError, setEmailError] = React.useState<string | null>(null);
   const [messageError, setMessageError] = React.useState<string | null>(null);
+  const [instagramError, setInstagramError] = React.useState<string | null>(
+    null
+  );
+
+  const instagramIsRequired =
+    preferredContactMethod === "instagram" && instagram === undefined;
 
   const sendEmail = (e: React.SyntheticEvent) => {
     e.persist();
     e.preventDefault();
     setIsSubmitting(true);
 
-    if (email === undefined || message === undefined) {
+    console.log(contactForm);
+
+    if (email === undefined || message === undefined || instagramIsRequired) {
+      instagramIsRequired &&
+        setInstagramError(
+          "Enter the Instagram username you'd like to me to contact you at"
+        );
+
       email === undefined &&
-        setEmailError("Enter the email you'd like to me to contact you on.");
+        setEmailError(
+          preferredContactMethod === "instagram"
+            ? "Email is required regardless of preferred contact method"
+            : "Enter the email you'd like to me to contact you on"
+        );
 
       message === undefined &&
         setMessageError(
-          "Enter a message including any questions or booking details."
+          "Enter a message including any questions or booking details"
         );
 
+      setIsSubmitting(false);
       return;
     }
 
@@ -81,7 +99,7 @@ export const ContactForm = (props: ContactFormProps) => {
         (error) => {
           console.error(error);
           toast({
-            title: "Something went wrong",
+            title: "Failed to send",
             description: "Please try emailing or DMing me",
             status: "error",
             duration: 5000,
@@ -89,9 +107,6 @@ export const ContactForm = (props: ContactFormProps) => {
           setIsSubmitting(false);
         }
       );
-
-    setEmailError(null);
-    setMessageError(null);
   };
 
   const editExtra = (altExtra: ExtrasEnum) => ({
@@ -142,8 +157,10 @@ export const ContactForm = (props: ContactFormProps) => {
           </Stack>
 
           <Stack direction="row" gap="0" justifyContent="space-between">
-            <FormLabel color="brand.100">Instagram Username</FormLabel>
-            <Box minW="60%">
+            <FormLabel color="brand.100">
+              Instagram Username{preferredContactMethod === "instagram" && " *"}
+            </FormLabel>
+            <Stack gap="0" minW="60%">
               <Input
                 bg="brand.100"
                 value={instagram}
@@ -154,7 +171,12 @@ export const ContactForm = (props: ContactFormProps) => {
                   }))
                 }
               />
-            </Box>
+              {instagramError && (
+                <FormHelperText color="brand.100">
+                  {instagramError}
+                </FormHelperText>
+              )}
+            </Stack>
           </Stack>
 
           <Stack direction="row" gap="0" justifyContent="space-between">
@@ -269,7 +291,7 @@ export const ContactForm = (props: ContactFormProps) => {
         <Button
           type="submit"
           bg="brand.200"
-          onSubmit={sendEmail}
+          onClick={sendEmail}
           isLoading={isSubmitting}
           loadingText="Submitting"
           leftIcon={<EmailIcon />}
