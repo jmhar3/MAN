@@ -1,5 +1,5 @@
 import * as React from "react";
-import { BiLogoGmail, BiLogoInstagram, BiSolidPencil } from "react-icons/bi";
+import { BiLogoGmail, BiLogoInstagram, BiSolidPhone } from "react-icons/bi";
 
 import {
   Box,
@@ -42,20 +42,24 @@ export const Contact = (props: ContactFormProps) => {
           <Heading fontFamily="Jost" fontSize="xl">
             Want to know more? Get in touch
           </Heading>
-          <Flex gap="2" align="center">
-            <Icon w="5" h="5" as={BiLogoGmail} />
-            <Link to="mailto:melbourneartnude@gmail.com">
+          <Link to="mailto:melbourneartnude@gmail.com">
+            <Flex gap="2" align="center">
+              <Icon w="5" h="5" as={BiLogoGmail} />
               <Text>MELBOURNEARTNUDE@GMAIL.COM</Text>
-            </Link>
-          </Flex>
-          <Flex gap="2" align="center">
-            <Icon w="5" h="5" as={BiLogoInstagram} />
-            <Text>@MELBOURNE_ART_NATURAL</Text>
-          </Flex>
-          <Flex gap="2" align="center">
-            <Icon w="5" h="5" as={BiSolidPencil} />
-            <Text>OR USE THE FORM BELOW...</Text>
-          </Flex>
+            </Flex>
+          </Link>
+          <Link to="https://www.instagram.com/melbourne_art_natural">
+            <Flex gap="2" align="center">
+              <Icon w="5" h="5" as={BiLogoInstagram} />
+              <Text>@MELBOURNE_ART_NATURAL</Text>
+            </Flex>
+          </Link>
+          <Link to="tel:0425870771">
+            <Flex gap="2" align="center">
+              <Icon w="5" h="5" as={BiSolidPhone} />
+              <Text>0425 870 771</Text>
+            </Flex>
+          </Link>
         </Stack>
 
         <Box>

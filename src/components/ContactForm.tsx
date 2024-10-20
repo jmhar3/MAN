@@ -71,7 +71,7 @@ export const ContactForm = (props: ContactFormProps) => {
 
       message === undefined &&
         setMessageError(
-          "Enter a message including any questions or booking details"
+          "Please include any and all queries you might have. No such thing as a dumb question!"
         );
 
       setIsSubmitting(false);
