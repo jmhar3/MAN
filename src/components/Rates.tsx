@@ -68,6 +68,7 @@ export const Rates = (props: RatesProps) => {
             <Package {...item} {...props} index={index} />
           ))}
         </Stack>
+
         <Stack
           gap="3"
           py="6"
@@ -81,6 +82,7 @@ export const Rates = (props: RatesProps) => {
             <Heading>Extras</Heading>
             <Divider borderColor="green.900" />
           </Flex>
+
           <Stack
             direction="row"
             align="center"
