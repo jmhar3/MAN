@@ -38,7 +38,10 @@ export const Package = (props: PackageProps) => {
   const bookPackage = () => {
     setContactForm((formValues) => ({
       ...formValues,
-      preferredPackage: title.toLowerCase() as PackageEnum,
+      preferredPackage:
+        title.toLowerCase() === "35mm film"
+          ? PackageEnum.Film
+          : (title.toLowerCase() as PackageEnum),
     }));
 
     navigate("/#contact");
