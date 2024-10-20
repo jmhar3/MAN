@@ -1,20 +1,34 @@
 import * as React from "react";
+import { AccordianItem, AccordianItemProps } from "./AccordianItem";
+
 import {
-  Text,
   Box,
   Heading,
   Divider,
-  useToken,
   Accordion,
-  AccordionItem,
-  AccordionButton,
-  AccordionPanel,
-  AccordionIcon,
   AbsoluteCenter,
 } from "@chakra-ui/react";
 
+const info: AccordianItemProps[] = [
+  {
+    label: "Before you book",
+    info: "",
+  },
+  {
+    label: "The booking process",
+    info: "",
+  },
+  {
+    label: "On the day",
+    info: "",
+  },
+  {
+    label: "After the shoot",
+    info: "",
+  },
+];
+
 export const Info = () => {
-  const [brand800] = useToken("colors", ["brand.800"]);
   return (
     <Box>
       <Box position="relative" py="10">
@@ -27,87 +41,9 @@ export const Info = () => {
       </Box>
 
       <Accordion allowToggle={true} borderColor="brand.800">
-        <AccordionItem>
-          <AccordionButton
-            _expanded={{ borderBottom: `solid 1px ${brand800}` }}
-          >
-            <Box as="span" flex="1" textAlign="left">
-              <Heading as="i" size="md" fontFamily="Jost">
-                Before you book
-              </Heading>
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel pb={4}>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </Text>
-          </AccordionPanel>
-        </AccordionItem>
-
-        <AccordionItem>
-          <AccordionButton
-            _expanded={{ borderBottom: `solid 1px ${brand800}` }}
-          >
-            <Box as="span" flex="1" textAlign="left">
-              <Heading as="i" size="md" fontFamily="Jost">
-                The booking process
-              </Heading>
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel pb={4}>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </Text>
-          </AccordionPanel>
-        </AccordionItem>
-
-        <AccordionItem>
-          <AccordionButton>
-            <Box as="span" flex="1" textAlign="left">
-              <Heading as="i" size="md" fontFamily="Jost">
-                On the day
-              </Heading>
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel pb={4}>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </Text>
-          </AccordionPanel>
-        </AccordionItem>
-
-        <AccordionItem>
-          <AccordionButton
-            _expanded={{ borderBottom: `solid 1px ${brand800}` }}
-          >
-            <Box as="span" flex="1" textAlign="left">
-              <Heading as="i" size="md" fontFamily="Jost">
-                After the shoot
-              </Heading>
-            </Box>
-            <AccordionIcon />
-          </AccordionButton>
-          <AccordionPanel pb={4}>
-            <Text>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
-            </Text>
-          </AccordionPanel>
-        </AccordionItem>
+        {info.map((item) => (
+          <AccordianItem {...item} />
+        ))}
       </Accordion>
     </Box>
   );
