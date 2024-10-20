@@ -21,13 +21,13 @@ export interface AccordianItemProps {
 }
 
 export const AccordianItem = (props: AccordianItemProps) => {
-  const [brand800] = useToken("colors", ["brand.800"]);
+  const [babyGreen] = useToken("colors", ["brand.babyGreen"]);
 
   const { label, info, imageInfo, images } = props;
 
   return (
     <AccordionItem>
-      <AccordionButton _expanded={{ borderBottom: `solid 1px ${brand800}` }}>
+      <AccordionButton _expanded={{ borderBottom: `solid 1px ${babyGreen}` }}>
         <Box as="span" flex="1" textAlign="left">
           <Heading as="i" size="md" fontFamily="Jost">
             {label}

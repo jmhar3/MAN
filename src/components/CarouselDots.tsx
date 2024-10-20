@@ -55,7 +55,10 @@ interface PropType extends ComponentPropsWithRef<"button"> {
 }
 
 export const DotButton: React.FC<PropType> = (props) => {
-  const [brand800, green900] = useToken("colors", ["brand.800", "green.900"]);
+  const [babyGreen, green900] = useToken("colors", [
+    "brand.babyGreen",
+    "green.900",
+  ]);
 
   return (
     <Button
@@ -73,7 +76,7 @@ export const DotButton: React.FC<PropType> = (props) => {
         rounded="full"
         _hover={{ borderColor: "green.900" }}
         border={
-          props.isSelected ? `solid 2px ${green900}` : `solid 2px ${brand800}`
+          props.isSelected ? `solid 2px ${green900}` : `solid 2px ${babyGreen}`
         }
       />
     </Button>

@@ -117,12 +117,16 @@ export const ContactForm = (props: ContactFormProps) => {
 
   return (
     <FormControl>
-      <Stack py="3" gap="6" divider={<StackDivider borderColor="brand.800" />}>
+      <Stack
+        py="3"
+        gap="6"
+        divider={<StackDivider borderColor="brand.babyGreen" />}
+      >
         <Stack direction="row" gap="0" justifyContent="space-between">
-          <FormLabel color="brand.100">Preferred Name</FormLabel>
+          <FormLabel color="brand.white">Preferred Name</FormLabel>
           <Input
             type="name"
-            bg="brand.100"
+            bg="brand.white"
             maxW="60%"
             value={name}
             onChange={(e) =>
@@ -136,7 +140,7 @@ export const ContactForm = (props: ContactFormProps) => {
 
         <Stack gap="5">
           <Stack gap="0" direction="row" justifyContent="space-between">
-            <FormLabel color="brand.100">Preferred Contact Method</FormLabel>
+            <FormLabel color="brand.white">Preferred Contact Method</FormLabel>
 
             <Box w="60%">
               <ButtonGroup size="sm" variant="outline">
@@ -157,12 +161,12 @@ export const ContactForm = (props: ContactFormProps) => {
           </Stack>
 
           <Stack direction="row" gap="0" justifyContent="space-between">
-            <FormLabel color="brand.100">
+            <FormLabel color="brand.white">
               Instagram Username{preferredContactMethod === "instagram" && " *"}
             </FormLabel>
             <Stack gap="0" minW="60%">
               <Input
-                bg="brand.100"
+                bg="brand.white"
                 value={instagram}
                 onChange={(e) =>
                   setContactForm((data: ContactFormType) => ({
@@ -172,7 +176,7 @@ export const ContactForm = (props: ContactFormProps) => {
                 }
               />
               {instagramError && (
-                <FormHelperText color="brand.100">
+                <FormHelperText color="brand.white">
                   {instagramError}
                 </FormHelperText>
               )}
@@ -180,10 +184,10 @@ export const ContactForm = (props: ContactFormProps) => {
           </Stack>
 
           <Stack direction="row" gap="0" justifyContent="space-between">
-            <FormLabel color="brand.100">Email *</FormLabel>
+            <FormLabel color="brand.white">Email *</FormLabel>
             <Stack gap="0" minW="60%">
               <Input
-                bg="brand.100"
+                bg="brand.white"
                 type="email"
                 value={email}
                 onChange={(e) =>
@@ -194,7 +198,9 @@ export const ContactForm = (props: ContactFormProps) => {
                 }
               />
               {emailError && (
-                <FormHelperText color="brand.100">{emailError}</FormHelperText>
+                <FormHelperText color="brand.white">
+                  {emailError}
+                </FormHelperText>
               )}
             </Stack>
           </Stack>
@@ -202,7 +208,7 @@ export const ContactForm = (props: ContactFormProps) => {
 
         <Stack>
           <Stack pb="3" gap="0" direction="row" justifyContent="space-between">
-            <FormLabel color="brand.100">Preferred Package</FormLabel>
+            <FormLabel color="brand.white">Preferred Package</FormLabel>
 
             <Box w="60%">
               <ButtonGroup size="sm" variant="outline">
@@ -229,11 +235,11 @@ export const ContactForm = (props: ContactFormProps) => {
           </Stack>
 
           <Stack direction="row" gap="0" justifyContent="space-between">
-            <FormLabel color="brand.100">Message *</FormLabel>
+            <FormLabel color="brand.white">Message *</FormLabel>
 
             <Stack gap="0" minW="60%">
               <Textarea
-                bg="brand.100"
+                bg="brand.white"
                 value={message}
                 onChange={(e) =>
                   setContactForm((data: ContactFormType) => ({
@@ -244,7 +250,7 @@ export const ContactForm = (props: ContactFormProps) => {
               />
 
               {messageError && (
-                <FormHelperText color="brand.100">
+                <FormHelperText color="brand.white">
                   {messageError}
                 </FormHelperText>
               )}
@@ -252,7 +258,7 @@ export const ContactForm = (props: ContactFormProps) => {
           </Stack>
 
           <Stack py="3" gap="0" direction="row" justifyContent="space-between">
-            <FormLabel color="brand.100">Interested in extras</FormLabel>
+            <FormLabel color="brand.white">Interested in extras</FormLabel>
 
             <Box w="60%">
               <ButtonGroup size="sm" variant="outline">
@@ -287,7 +293,7 @@ export const ContactForm = (props: ContactFormProps) => {
       </Stack>
 
       <Flex align="center" gap="5">
-        <Divider borderColor="brand.100" />
+        <Divider borderColor="brand.white" />
         <Button
           type="submit"
           bg="brand.200"
@@ -295,7 +301,7 @@ export const ContactForm = (props: ContactFormProps) => {
           isLoading={isSubmitting}
           loadingText="Submitting"
           leftIcon={<EmailIcon />}
-          _hover={{ bg: "brand.400" }}
+          _hover={{ bg: "brand.babyBlue" }}
         >
           Send Message
         </Button>

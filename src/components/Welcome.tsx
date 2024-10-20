@@ -11,7 +11,7 @@ export const Welcome = () => {
           pr="120px"
           fontSize="6xl"
           fontFamily="Jost"
-          color="brand.100"
+          color="brand.white"
           textShadow="1px 1px 2px grey"
         >
           Melbourne
@@ -21,7 +21,7 @@ export const Welcome = () => {
           m="-16"
           zIndex="900"
           fontSize="9xl"
-          color="brand.500"
+          color="brand.babyBlue"
           textShadow="1px 1px 2px grey"
         >
           Art
@@ -31,7 +31,7 @@ export const Welcome = () => {
           pl="180px"
           fontSize="6xl"
           fontFamily="Jost"
-          color="brand.100"
+          color="brand.white"
           textShadow="1px 1px 2px grey"
         >
           Natural
@@ -42,10 +42,10 @@ export const Welcome = () => {
           to="/#about"
           fontSize="2xl"
           variant="ghost"
-          color="brand.400"
+          color="brand.babyBlue"
           aria-label="scroll down"
           icon={<ArrowDownIcon />}
-          _hover={{ bg: "none", color: "brand.400" }}
+          _hover={{ bg: "none", color: "brand.babyBlue" }}
         />
       </Stack>
     </Box>

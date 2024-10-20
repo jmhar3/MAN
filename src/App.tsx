@@ -61,13 +61,11 @@ export const App = () => {
     },
     colors: {
       brand: {
-        100: "#f4f5f1",
-        200: "#f6f8f1",
-        // ...
-        400: "#e7f3f3",
-        500: "#d6e7e6",
-        // ...
-        800: "#d8e8e1",
+        white: "#f6f8f1",
+        babyBlue: "#e7f3f3",
+        babyGreen: "#d8e8e1",
+        deepGreen: "#1c4532",
+        contrast: "#f56a54",
       },
     },
   });

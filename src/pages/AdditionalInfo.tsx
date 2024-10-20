@@ -59,12 +59,12 @@ export const AdditionalInfo = () => {
     <Stack p="10" pt="28" gap="10">
       <Box position="relative">
         <Divider borderColor="green.900" />
-        <AbsoluteCenter bg="brand.100" px="4">
+        <AbsoluteCenter bg="brand.white" px="4">
           <Heading>Policy</Heading>
         </AbsoluteCenter>
       </Box>
 
-      <Accordion allowToggle={true} borderColor="brand.800">
+      <Accordion allowToggle={true} borderColor="brand.babyGreen">
         {policy.map((item) => (
           <AccordianItem {...item} />
         ))}
@@ -72,12 +72,12 @@ export const AdditionalInfo = () => {
 
       <Box position="relative">
         <Divider borderColor="green.900" />
-        <AbsoluteCenter bg="brand.100" px="4">
+        <AbsoluteCenter bg="brand.white" px="4">
           <Heading>Frequently Asked Questions</Heading>
         </AbsoluteCenter>
       </Box>
 
-      <Accordion allowToggle={true} borderColor="brand.800">
+      <Accordion allowToggle={true} borderColor="brand.babyGreen">
         {faqs.map((item) => (
           <AccordianItem {...item} />
         ))}

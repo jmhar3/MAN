@@ -87,7 +87,7 @@ export const Testimonials = () => {
                 <Heading w="50%" fontFamily="Jost" fontSize="xl">
                   {props.name}
                 </Heading>
-                <Divider borderColor="brand.800" />
+                <Divider borderColor="brand.babyGreen" />
               </Flex>
               <Text>{props.testimonial[0].slice(0, 150)}...</Text>
               <Box textAlign="right">

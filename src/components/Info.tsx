@@ -33,14 +33,14 @@ export const Info = () => {
     <Box>
       <Box position="relative" py="10">
         <Divider borderColor="green.900" />
-        <AbsoluteCenter bg="brand.100" px="4">
+        <AbsoluteCenter bg="brand.white" px="4">
           <Heading color="green.900" as="i" size="md" fontFamily="Jost">
             What it's like to work with me
           </Heading>
         </AbsoluteCenter>
       </Box>
 
-      <Accordion allowToggle={true} borderColor="brand.800">
+      <Accordion allowToggle={true} borderColor="brand.babyGreen">
         {info.map((item) => (
           <AccordianItem {...item} />
         ))}

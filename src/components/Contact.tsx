@@ -39,7 +39,7 @@ export const Contact = (props: ContactFormProps) => {
           justifyContent="space-between"
           backgroundImage="url(/noise.png)"
           backgroundColor="rgba(244,245,241,0.9)"
-          divider={<StackDivider borderColor="brand.800" />}
+          divider={<StackDivider borderColor="brand.babyGreen" />}
         >
           <Heading fontFamily="Jost" fontSize="xl">
             Want to know more? Get in touch
@@ -66,10 +66,10 @@ export const Contact = (props: ContactFormProps) => {
 
         <Box>
           <Flex align="center" gap="5" pb="3">
-            <Heading color="brand.100" minW="12%">
+            <Heading color="brand.white" minW="12%">
               Send an inquiry
             </Heading>
-            <Divider borderColor="brand.100" />
+            <Divider borderColor="brand.white" />
             <Button
               w="15%"
               as={Link}
