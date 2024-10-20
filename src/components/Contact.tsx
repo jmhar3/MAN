@@ -3,6 +3,7 @@ import { BiLogoGmail, BiLogoInstagram, BiSolidPhone } from "react-icons/bi";
 
 import {
   Box,
+  Button,
   Divider,
   Flex,
   Heading,
@@ -14,9 +15,10 @@ import {
 } from "@chakra-ui/react";
 import { ContactForm, ContactFormProps } from "./ContactForm";
 import { Link } from "react-router-dom";
+import { InfoOutlineIcon } from "@chakra-ui/icons";
 
 export const Contact = (props: ContactFormProps) => {
-  const [brand200] = useToken("colors", ["brand.200"]);
+  const [brand200] = useToken("colors", ["brand.200", "green.900"]);
 
   return (
     <Box
@@ -68,6 +70,21 @@ export const Contact = (props: ContactFormProps) => {
               Send an inquiry
             </Heading>
             <Divider borderColor="brand.100" />
+            <Button
+              w="15%"
+              as={Link}
+              to="/info"
+              bg="none"
+              color="brand.200"
+              leftIcon={<InfoOutlineIcon />}
+              border={`solid 1px ${brand200}`}
+              _hover={{
+                bg: "brand.200",
+                color: "green.900",
+              }}
+            >
+              Booking policy
+            </Button>
           </Flex>
 
           <ContactForm {...props} />
