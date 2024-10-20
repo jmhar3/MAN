@@ -12,7 +12,10 @@ import {
   Heading,
   Flex,
   Divider,
+  useToken,
+  useBoolean,
 } from "@chakra-ui/react";
+import { BiCamera } from "react-icons/bi";
 
 interface TestimonialProps {
   image: string;
@@ -21,6 +24,10 @@ interface TestimonialProps {
 }
 export const TestimonialModal = (props: TestimonialProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const [green900] = useToken("colors", ["green.900"]);
+
+  const [showPhotos, setShowPhotos] = useBoolean();
 
   return (
     <>
@@ -40,11 +47,26 @@ export const TestimonialModal = (props: TestimonialProps) => {
           backgroundColor="rgba(244,245,241,0.85)"
         >
           <ModalBody as={Stack} gap="4" p="5">
-            <Img src={props.image} />
+            {showPhotos && <Img src={props.image} />}
             <Flex align="center" gap="5">
               <Heading color="green.900">{props.name}</Heading>
               <Divider borderColor="green.900" />
+              <Button
+                w="30%"
+                bg="none"
+                onClick={setShowPhotos.toggle}
+                color="green.900"
+                leftIcon={<BiCamera />}
+                border={`solid 1px ${green900}`}
+                _hover={{
+                  bg: "green.900",
+                  color: "brand.200",
+                }}
+              >
+                {showPhotos ? "Hide" : "View"} Photos
+              </Button>
             </Flex>
+
             {props.testimonial.map((paragraph) => (
               <Text>{paragraph}</Text>
             ))}
