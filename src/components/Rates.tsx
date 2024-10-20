@@ -20,23 +20,23 @@ export interface RatesProps {
 
 const packages = [
   {
+    image: "digital.png",
     title: "Digital",
-    description:
-      "Something for everyone. Laboris nisi ut aliquip ex ea commodo consequat.",
+    description: "This basic photo package is my best seller",
     included: ["1.5 hours", "15 high resolution edits", "Light Retouching"],
     rate: 475,
   },
   {
+    image: "image.png",
     title: "Complete",
-    description:
-      "The ultimate brand booster. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    description: "The ultimate brand booster.",
     included: ["4 hours", "20 high resolution edits", "Complete Retouching"],
     rate: 1000,
   },
   {
+    image: "digital.png",
     title: "35mm Film",
-    description:
-      "My personal specialty. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    description: "My personal specialty.",
     included: ["2 hours", "20 high res film scans"],
     rate: 635,
   },
@@ -60,7 +60,7 @@ export const Rates = (props: RatesProps) => {
         <Stack
           py="4"
           gap="6"
-          w="70%"
+          w="50%"
           align="center"
           divider={<StackDivider borderColor="brand.800" />}
         >
