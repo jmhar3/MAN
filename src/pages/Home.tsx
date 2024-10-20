@@ -20,7 +20,7 @@ export enum ExtrasEnum {
   Raws = "raws",
 }
 
-export interface ContactForm {
+export interface ContactFormType {
   name?: string;
   email?: string;
   message?: string;
@@ -32,7 +32,7 @@ export interface ContactForm {
 
 export const Home = () => {
   ScrollToAnchor();
-  const [contactForm, setContactForm] = React.useState<ContactForm>({});
+  const [contactForm, setContactForm] = React.useState<ContactFormType>({});
 
   return (
     <>

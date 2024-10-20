@@ -1,113 +1,30 @@
 import * as React from "react";
-import { EmailIcon } from "@chakra-ui/icons";
-import emailjs from "@emailjs/browser";
-import { ContactForm, ExtrasEnum, PackageEnum } from "../pages/Home";
 import { BiLogoGmail, BiLogoInstagram, BiSolidPencil } from "react-icons/bi";
 
 import {
-  AbsoluteCenter,
   Box,
-  Button,
-  ButtonGroup,
   Divider,
   Flex,
-  FormControl,
-  FormHelperText,
-  FormLabel,
   Heading,
   Icon,
-  Input,
   Stack,
   StackDivider,
   Text,
-  Textarea,
-  useToast,
   useToken,
 } from "@chakra-ui/react";
+import { ContactForm, ContactFormProps } from "./ContactForm";
+import { Link } from "react-router-dom";
 
-export interface ContactProps {
-  contactForm: ContactForm;
-  setContactForm: React.Dispatch<React.SetStateAction<ContactForm>>;
-}
-
-export const Contact = (props: ContactProps) => {
-  const { contactForm, setContactForm } = props;
-
-  const {
-    name,
-    email,
-    message,
-    instagram,
-    extras = [],
-    preferredPackage,
-    preferredContactMethod,
-  } = contactForm;
-
-  const toast = useToast();
+export const Contact = (props: ContactFormProps) => {
   const [brand200] = useToken("colors", ["brand.200"]);
-  const [isSubmitting, setIsSubmitting] = React.useState(false);
-  const [emailError, setEmailError] = React.useState<string | null>(null);
-  const [messageError, setMessageError] = React.useState<string | null>(null);
-
-  const sendEmail = (e: React.SyntheticEvent) => {
-    e.persist();
-    e.preventDefault();
-    setIsSubmitting(true);
-
-    if (email === undefined || message === undefined) {
-      email === undefined &&
-        setEmailError("Enter the email you'd like to me to contact you on.");
-
-      message === undefined &&
-        setMessageError(
-          "Enter a message including any questions or booking details."
-        );
-
-      return;
-    }
-
-    emailjs
-      .sendForm(
-        process.env.REACT_APP_SERVICE_ID!,
-        process.env.REACT_APP_TEMPLATE_ID!,
-        email,
-        process.env.REACT_APP_PUBLIC_KEY
-      )
-      .then(
-        (result) => {
-          console.log(result);
-          toast({
-            title: "Message sent!",
-            status: "success",
-            duration: 5000,
-          });
-          setIsSubmitting(false);
-          setContactForm({});
-        },
-        (error) => {
-          console.error(error);
-          toast({
-            title: "Something went wrong",
-            description: "Please try emailing or DMing me",
-            status: "error",
-            duration: 5000,
-          });
-          setIsSubmitting(false);
-        }
-      );
-
-    setEmailError(null);
-    setMessageError(null);
-  };
-
-  const editExtra = (altExtra: ExtrasEnum) => ({
-    extras: extras.find((extra) => extra === altExtra)
-      ? extras.filter((extra) => extra !== altExtra)
-      : [...extras, altExtra],
-  });
 
   return (
-    <Box bg="green.900" py="1">
+    <Box
+      backgroundImage="url(/noise.png)"
+      backgroundColor="rgba(5, 38, 23, 0.9)"
+      backgroundBlendMode="darken"
+      py="1"
+    >
       <Stack w="100%" p="10" gap="6">
         <Stack
           p="6"
@@ -127,11 +44,13 @@ export const Contact = (props: ContactProps) => {
           </Heading>
           <Flex gap="2" align="center">
             <Icon w="5" h="5" as={BiLogoGmail} />
-            <Text>NOAH@MELBOURNEARTNATURAL.COM</Text>
+            <Link to="mailto:melbourneartnude@gmail.com">
+              <Text>MELBOURNEARTNUDE@GMAIL.COM</Text>
+            </Link>
           </Flex>
           <Flex gap="2" align="center">
             <Icon w="5" h="5" as={BiLogoInstagram} />
-            <Text>@MELBOURNEARTNATURAL</Text>
+            <Text>@MELBOURNE_ART_NATURAL</Text>
           </Flex>
           <Flex gap="2" align="center">
             <Icon w="5" h="5" as={BiSolidPencil} />
@@ -147,227 +66,9 @@ export const Contact = (props: ContactProps) => {
             <Divider borderColor="brand.100" />
           </Flex>
 
-          <FormControl>
-            <Stack
-              py="3"
-              gap="6"
-              divider={<StackDivider borderColor="brand.800" />}
-            >
-              <Stack direction="row" gap="0" justifyContent="space-between">
-                <FormLabel color="brand.100">Preferred Name</FormLabel>
-                <Input
-                  type="name"
-                  bg="brand.100"
-                  maxW="60%"
-                  value={name}
-                  onChange={(e) =>
-                    setContactForm((data: ContactForm) => ({
-                      ...data,
-                      name: e.target.value,
-                    }))
-                  }
-                />
-              </Stack>
-
-              <Stack gap="5">
-                <Stack gap="0" direction="row" justifyContent="space-between">
-                  <FormLabel color="brand.100">
-                    Preferred Contact Method
-                  </FormLabel>
-
-                  <Box w="60%">
-                    <ButtonGroup size="sm" variant="outline">
-                      <FormButton
-                        {...props}
-                        label="Email"
-                        newFormData={{ preferredContactMethod: "email" }}
-                        isSelected={preferredContactMethod === "email"}
-                      />
-                      <FormButton
-                        {...props}
-                        label="Instagram"
-                        newFormData={{ preferredContactMethod: "instagram" }}
-                        isSelected={preferredContactMethod === "instagram"}
-                      />
-                    </ButtonGroup>
-                  </Box>
-                </Stack>
-
-                <Stack direction="row" gap="0" justifyContent="space-between">
-                  <FormLabel color="brand.100">Instagram Username</FormLabel>
-                  <Box minW="60%">
-                    <Input
-                      bg="brand.100"
-                      value={instagram}
-                      onChange={(e) =>
-                        setContactForm((data: ContactForm) => ({
-                          ...data,
-                          instagram: e.target.value,
-                        }))
-                      }
-                    />
-                  </Box>
-                </Stack>
-
-                <Stack direction="row" gap="0" justifyContent="space-between">
-                  <FormLabel color="brand.100">Email *</FormLabel>
-                  <Stack gap="0" minW="60%">
-                    <Input
-                      bg="brand.100"
-                      type="email"
-                      value={email}
-                      onChange={(e) =>
-                        setContactForm((data: ContactForm) => ({
-                          ...data,
-                          email: e.target.value,
-                        }))
-                      }
-                    />
-                    {emailError && (
-                      <FormHelperText color="brand.100">
-                        {emailError}
-                      </FormHelperText>
-                    )}
-                  </Stack>
-                </Stack>
-              </Stack>
-
-              <Stack>
-                <Stack
-                  pb="3"
-                  gap="0"
-                  direction="row"
-                  justifyContent="space-between"
-                >
-                  <FormLabel color="brand.100">Preferred Package</FormLabel>
-
-                  <Box w="60%">
-                    <ButtonGroup size="sm" variant="outline">
-                      <FormButton
-                        {...props}
-                        label="Digital"
-                        newFormData={{ preferredPackage: PackageEnum.Digital }}
-                        isSelected={preferredPackage === "digital"}
-                      />
-                      <FormButton
-                        {...props}
-                        label="Film"
-                        newFormData={{ preferredPackage: PackageEnum.Film }}
-                        isSelected={preferredPackage === "film"}
-                      />
-                      <FormButton
-                        {...props}
-                        label="Complete"
-                        newFormData={{ preferredPackage: PackageEnum.Complete }}
-                        isSelected={preferredPackage === "complete"}
-                      />
-                    </ButtonGroup>
-                  </Box>
-                </Stack>
-
-                <Stack direction="row" gap="0" justifyContent="space-between">
-                  <FormLabel color="brand.100">Message *</FormLabel>
-
-                  <Stack gap="0" minW="60%">
-                    <Textarea
-                      bg="brand.100"
-                      value={message}
-                      onChange={(e) =>
-                        setContactForm((data: ContactForm) => ({
-                          ...data,
-                          message: e.target.value,
-                        }))
-                      }
-                    />
-
-                    {messageError && (
-                      <FormHelperText color="brand.100">
-                        {messageError}
-                      </FormHelperText>
-                    )}
-                  </Stack>
-                </Stack>
-
-                <Stack
-                  py="3"
-                  gap="0"
-                  direction="row"
-                  justifyContent="space-between"
-                >
-                  <FormLabel color="brand.100">Interested in extras</FormLabel>
-
-                  <Box w="60%">
-                    <ButtonGroup size="sm" variant="outline">
-                      <FormButton
-                        {...props}
-                        label="Roll of film"
-                        newFormData={editExtra(ExtrasEnum.Film)}
-                        isSelected={extras.includes(ExtrasEnum.Film)}
-                      />
-                      <FormButton
-                        {...props}
-                        label="30 mins extension"
-                        newFormData={editExtra(ExtrasEnum.Extension)}
-                        isSelected={extras.includes(ExtrasEnum.Extension)}
-                      />
-                      <FormButton
-                        {...props}
-                        label="Additional edits"
-                        newFormData={editExtra(ExtrasEnum.Edits)}
-                        isSelected={extras.includes(ExtrasEnum.Edits)}
-                      />
-                      <FormButton
-                        {...props}
-                        label="All RAWs"
-                        newFormData={editExtra(ExtrasEnum.Raws)}
-                        isSelected={extras.includes(ExtrasEnum.Raws)}
-                      />
-                    </ButtonGroup>
-                  </Box>
-                </Stack>
-              </Stack>
-            </Stack>
-
-            <Flex align="center" gap="5">
-              <Divider borderColor="brand.100" />
-              <Button
-                type="submit"
-                bg="brand.200"
-                onSubmit={sendEmail}
-                isLoading={isSubmitting}
-                loadingText="Submitting"
-                leftIcon={<EmailIcon />}
-                _hover={{ bg: "brand.400" }}
-              >
-                Send Message
-              </Button>
-            </Flex>
-          </FormControl>
+          <ContactForm {...props} />
         </Box>
       </Stack>
     </Box>
   );
 };
-
-interface FormButtonProps extends ContactProps {
-  newFormData: { [key: string]: string | string[] };
-  isSelected: boolean;
-  label: string;
-}
-
-const FormButton = (props: FormButtonProps) => (
-  <Button
-    rounded="full"
-    onClick={() =>
-      props.setContactForm((data) => ({
-        ...data,
-        ...props.newFormData,
-      }))
-    }
-    bg={props.isSelected ? "brand.200" : "green.900"}
-    color={props.isSelected ? "green.900" : "brand.200"}
-    _hover={{ bg: "brand.800", color: "green.900" }}
-  >
-    {props.label}
-  </Button>
-);
