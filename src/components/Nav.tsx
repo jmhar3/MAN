@@ -81,6 +81,7 @@ export const Nav = () => {
             as={ReactRouterLink}
             to="/#contact "
             variant="outline"
+            bg="brand.200"
             color="green.900"
             borderColor="green.900"
             _hover={{
