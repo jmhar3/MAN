@@ -20,6 +20,7 @@ import { PackageEnum } from "../pages/Home";
 import { RatesProps } from "./Rates";
 
 export interface PackageProps extends RatesProps {
+  image: string;
   title: string;
   description: string;
   included: string[];
@@ -28,7 +29,8 @@ export interface PackageProps extends RatesProps {
 }
 
 export const Package = (props: PackageProps) => {
-  const { index, title, description, included, rate, setContactForm } = props;
+  const { index, image, title, description, included, rate, setContactForm } =
+    props;
 
   const [green900] = useToken("colors", ["green.900"]);
   const navigate = useNavigate();
@@ -47,10 +49,10 @@ export const Package = (props: PackageProps) => {
   };
 
   return (
-    <Flex gap="10" align="center">
-      {isOdd(index) && <Img src="/nature.png" boxSize="sm" objectFit="cover" />}
+    <Flex gap="20" align="center" w="100%">
+      {isOdd(index) && <Img src={image} boxSize="sm" objectFit="cover" />}
 
-      <Stack gap="5" align="center" justify="center" h="100%" w="100%">
+      <Stack gap="5" h="100%" w="100%" justify="center" align="center">
         <Stack py="3" gap="5">
           <Stack gap="1">
             <Heading
@@ -112,9 +114,7 @@ export const Package = (props: PackageProps) => {
         </Button>
       </Stack>
 
-      {isOdd(index + 1) && (
-        <Img src="/nature.png" boxSize="sm" objectFit="cover" />
-      )}
+      {isOdd(index + 1) && <Img src={image} boxSize="sm" objectFit="cover" />}
     </Flex>
   );
 };
