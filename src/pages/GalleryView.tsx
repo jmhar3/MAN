@@ -6,13 +6,11 @@ import { gallery } from "./Gallery";
 import { useParams } from "react-router-dom";
 
 export const GalleryView = () => {
-  let { set: setLabel } = useParams();
+  let { set: params } = useParams();
 
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, axis: "y" }, [
-    Autoplay(),
-  ]);
+  const [emblaRef] = useEmblaCarousel({ loop: true, axis: "y" }, [Autoplay()]);
 
-  const set = gallery.find((set) => set.label.toLowerCase() === setLabel);
+  const set = gallery.find((set) => set.id === params);
 
   return (
     <Flex alignContent="space-between" justifyContent="space-between" h="98vh">

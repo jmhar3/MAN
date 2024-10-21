@@ -3,6 +3,7 @@ import { Box, Img, Stack, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 
 export interface GalleryItemProps {
+  id: string;
   label: string;
   displayImage: string;
   images: string[];
@@ -36,7 +37,7 @@ export const GalleryItem = (props: GalleryItemProps) => {
         >
           {props.label}
         </Heading>
-        <Link to={`/gallery/${props.label.toLowerCase()}`}>
+        <Link to={`/gallery/${props.id}`}>
           <Img src={props.displayImage} />
         </Link>
       </Stack>

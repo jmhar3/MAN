@@ -7,6 +7,7 @@ import { GalleryItem } from "../components/GalleryItem";
 
 export const gallery = [
   {
+    id: "film",
     label: "Film",
     displayImage: "/nature.png",
     images: [
@@ -20,6 +21,7 @@ export const gallery = [
     ],
   },
   {
+    id: "light-retouching",
     label: "Light Retouching",
     displayImage: "/nature.png",
     images: [
@@ -33,6 +35,7 @@ export const gallery = [
     ],
   },
   {
+    id: "complete-retouching",
     label: "Complete Retouching",
     displayImage: "/nature.png",
     images: [
@@ -46,6 +49,7 @@ export const gallery = [
     ],
   },
   {
+    id: "shibari",
     label: "Shibari",
     displayImage: "/nature.png",
     images: [

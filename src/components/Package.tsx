@@ -1,6 +1,6 @@
 import * as React from "react";
 import { CheckCircleIcon, InfoOutlineIcon } from "@chakra-ui/icons";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import {
   Flex,
@@ -18,6 +18,7 @@ import {
 
 import { PackageEnum } from "../pages/Home";
 import { RatesProps } from "./Rates";
+import { BiCamera } from "react-icons/bi";
 
 export interface PackageProps extends RatesProps {
   image: string;
@@ -34,6 +35,17 @@ export const Package = (props: PackageProps) => {
 
   const [green900] = useToken("colors", ["green.900"]);
   const navigate = useNavigate();
+
+  const galleryLink = () => {
+    switch (title) {
+      case "35mm Film":
+        return "film";
+      case "Digital":
+        return "light-retouching";
+      case "Complete":
+        return "full-retouching";
+    }
+  };
 
   const bookPackage = () => {
     setContactForm((formValues) => ({
@@ -55,7 +67,7 @@ export const Package = (props: PackageProps) => {
     <Flex gap="20" align="center" w="100%">
       {isOdd(index) && <Img src={image} boxSize="sm" objectFit="cover" />}
 
-      <Stack gap="5" h="100%" w="100%" justify="center" align="center">
+      <Stack gap="5" h="100%" w="100%" justify="center" align="flex-start">
         <Stack py="3" gap="5">
           <Stack gap="1">
             <Heading
@@ -102,19 +114,38 @@ export const Package = (props: PackageProps) => {
           <Text fontSize="2xl">${rate}</Text>
         </Stack>
 
-        <Button
-          onClick={bookPackage}
-          border={`solid 1px ${green900}`}
-          color="green.900"
-          bg="brand.200"
-          w="fit-content"
-          _hover={{
-            bg: "green.900",
-            color: "brand.200",
-          }}
-        >
-          Book this package
-        </Button>
+        <Flex gap="3">
+          <Button
+            size="sm"
+            bg="green.900"
+            w="fit-content"
+            color="brand.white"
+            _hover={{
+              bg: "brand.white",
+              color: "green.900",
+            }}
+            onClick={bookPackage}
+            border={`solid 1px ${green900}`}
+          >
+            Book this package
+          </Button>
+
+          <Button
+            as={Link}
+            size="sm"
+            w="fit-content"
+            bg="brand.white"
+            color="green.900"
+            _hover={{
+              bg: "green.900",
+              color: "brand.white",
+            }}
+            border={`solid 1px ${green900}`}
+            to={`/gallery/${galleryLink()}`}
+          >
+            See Examples
+          </Button>
+        </Flex>
       </Stack>
 
       {isOdd(index + 1) && <Img src={image} boxSize="sm" objectFit="cover" />}
