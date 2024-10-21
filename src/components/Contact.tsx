@@ -29,8 +29,8 @@ export const Contact = (props: ContactFormProps) => {
     >
       <Stack w="100%" p="10" gap="6">
         <Stack
-          p="6"
-          px="8"
+          p="4"
+          px="7"
           rounded="md"
           align="center"
           direction="row"
@@ -56,10 +56,10 @@ export const Contact = (props: ContactFormProps) => {
               <Text>@MELBOURNE_ART_NATURAL</Text>
             </Flex>
           </Link>
-          <Link to="tel:0425870771">
+          <Link to="tel:0434036905">
             <Flex gap="2" align="center">
               <Icon w="5" h="5" as={BiSolidPhone} />
-              <Text>0425 870 771</Text>
+              <Text>0434 036 905</Text>
             </Flex>
           </Link>
         </Stack>
@@ -71,10 +71,11 @@ export const Contact = (props: ContactFormProps) => {
             </Heading>
             <Divider borderColor="brand.white" />
             <Button
-              w="15%"
+              w="12%"
               as={Link}
-              to="/info"
+              size="sm"
               bg="none"
+              to="/info"
               color="brand.white"
               leftIcon={<InfoOutlineIcon />}
               border={`solid 1px ${white}`}
