@@ -1,6 +1,6 @@
 import * as React from "react";
 import { CheckCircleIcon, InfoOutlineIcon } from "@chakra-ui/icons";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import {
   Flex,
@@ -16,9 +16,9 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 
-import { PackageEnum } from "../pages/Home";
 import { RatesProps } from "./Rates";
-import { BiCamera } from "react-icons/bi";
+import { PackageEnum } from "../pages/Home";
+import { ExampleModal } from "./ExampleModal";
 
 export interface PackageProps extends RatesProps {
   image: string;
@@ -35,17 +35,6 @@ export const Package = (props: PackageProps) => {
 
   const [green900] = useToken("colors", ["green.900"]);
   const navigate = useNavigate();
-
-  const galleryLink = () => {
-    switch (title) {
-      case "35mm Film":
-        return "film";
-      case "Digital":
-        return "light-retouching";
-      case "Complete":
-        return "full-retouching";
-    }
-  };
 
   const bookPackage = () => {
     setContactForm((formValues) => ({
@@ -67,16 +56,17 @@ export const Package = (props: PackageProps) => {
     <Flex gap="20" align="center" w="100%">
       {isOdd(index) && <Img src={image} boxSize="sm" objectFit="cover" />}
 
-      <Stack gap="5" h="100%" w="100%" justify="center" align="flex-start">
+      <Stack gap="2" h="100%" w="100%" justify="center" align="flex-start">
         <Stack py="3" gap="5">
-          <Stack gap="1">
+          <Stack gap="0">
             <Heading
               as="i"
-              size="lg"
+              mb="-1.5"
+              fontSize="2xl"
               fontFamily="Jost"
               _firstLetter={{
                 mr: "-0.5",
-                fontSize: "6xl",
+                fontSize: "5xl",
                 fontFamily: "Imperial Script",
                 fontStyle: "normal",
               }}
@@ -86,7 +76,7 @@ export const Package = (props: PackageProps) => {
             <Text fontSize="lg">{description}</Text>
           </Stack>
 
-          <List spacing={3}>
+          <List spacing="2">
             {included.map((item) => (
               <ListItem as={Flex} gap="2" align="center">
                 <ListIcon as={CheckCircleIcon} color="green.900" m="0" />
@@ -130,21 +120,15 @@ export const Package = (props: PackageProps) => {
             Book this package
           </Button>
 
-          <Button
-            as={Link}
-            size="sm"
-            w="fit-content"
-            bg="brand.white"
-            color="green.900"
-            _hover={{
-              bg: "green.900",
-              color: "brand.white",
-            }}
-            border={`solid 1px ${green900}`}
-            to={`/gallery/${galleryLink()}`}
-          >
-            See Examples
-          </Button>
+          <ExampleModal
+            description="This is a description about retouching blah blah blah"
+            images={[
+              "/nature.png",
+              "/nature.png",
+              "/nature.png",
+              "/nature.png",
+            ]}
+          />
         </Flex>
       </Stack>
 
