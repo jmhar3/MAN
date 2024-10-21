@@ -125,10 +125,11 @@ export const ContactForm = (props: ContactFormProps) => {
         <Stack direction="row" gap="0" justifyContent="space-between">
           <FormLabel color="brand.white">Preferred Name</FormLabel>
           <Input
+            size="sm"
             type="name"
-            bg="brand.white"
             maxW="60%"
             value={name}
+            bg="brand.white"
             onChange={(e) =>
               setContactForm((data: ContactFormType) => ({
                 ...data,
@@ -166,6 +167,7 @@ export const ContactForm = (props: ContactFormProps) => {
             </FormLabel>
             <Stack gap="0" minW="60%">
               <Input
+                size="sm"
                 bg="brand.white"
                 value={instagram}
                 onChange={(e) =>
@@ -187,9 +189,10 @@ export const ContactForm = (props: ContactFormProps) => {
             <FormLabel color="brand.white">Email *</FormLabel>
             <Stack gap="0" minW="60%">
               <Input
-                bg="brand.white"
+                size="sm"
                 type="email"
                 value={email}
+                bg="brand.white"
                 onChange={(e) =>
                   setContactForm((data: ContactFormType) => ({
                     ...data,
@@ -239,6 +242,7 @@ export const ContactForm = (props: ContactFormProps) => {
 
             <Stack gap="0" minW="60%">
               <Textarea
+                size="sm"
                 bg="brand.white"
                 value={message}
                 onChange={(e) =>
@@ -258,7 +262,7 @@ export const ContactForm = (props: ContactFormProps) => {
           </Stack>
 
           <Stack py="3" gap="0" direction="row" justifyContent="space-between">
-            <FormLabel color="brand.white">Interested in extras</FormLabel>
+            <FormLabel color="brand.white">Optional extras</FormLabel>
 
             <Box w="60%">
               <ButtonGroup size="sm" variant="outline">
@@ -295,6 +299,8 @@ export const ContactForm = (props: ContactFormProps) => {
       <Flex align="center" gap="5">
         <Divider borderColor="brand.white" />
         <Button
+          w="10%"
+          size="sm"
           type="submit"
           bg="brand.white"
           onClick={sendEmail}

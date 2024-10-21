@@ -67,6 +67,7 @@ export const About = () => {
         <Box mt="3" textAlign="right">
           <Button
             as={Link}
+            size="sm"
             to="/info"
             bg="brand.white"
             w="fit-content"
