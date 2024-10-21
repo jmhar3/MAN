@@ -91,8 +91,9 @@ export const AdditionalInfo = () => {
         </Text>
         <Button
           mt="4"
+          size="sm"
           as={Link}
-          to="/#contact "
+          to="/#contact"
           variant="outline"
           bg="brand.white"
           color="green.900"
@@ -101,7 +102,6 @@ export const AdditionalInfo = () => {
             bg: "green.900",
             color: "brand.white",
           }}
-          mr={4}
         >
           Get in touch
         </Button>
