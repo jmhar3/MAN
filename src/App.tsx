@@ -2,7 +2,7 @@ import * as React from "react";
 import "@fontsource/jost";
 import "@fontsource/imperial-script";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
-import { Gallery } from "./pages/Gallery";
+import { Showcase } from "./pages/Showcase";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Nav } from "./components/Nav";
@@ -79,7 +79,7 @@ export const App = () => {
           <Route path="/" element={<Home />} />
         </Routes>
         <Routes>
-          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/gallery" element={<Showcase />} />
         </Routes>
         <Routes>
           <Route path="/gallery/:set" element={<GalleryView />} />
