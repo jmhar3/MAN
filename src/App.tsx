@@ -35,14 +35,14 @@ export const App = () => {
       },
       Input: {
         baseStyle: {
-          borderColor: "brand.200",
-          bg: "brand.200",
+          borderColor: "brand.white",
+          bg: "brand.white",
         },
       },
       Textarea: {
         baseStyle: {
-          borderColor: "brand.200",
-          bg: "brand.200",
+          borderColor: "brand.white",
+          bg: "brand.white",
         },
       },
     },

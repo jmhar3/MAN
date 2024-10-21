@@ -296,7 +296,7 @@ export const ContactForm = (props: ContactFormProps) => {
         <Divider borderColor="brand.white" />
         <Button
           type="submit"
-          bg="brand.200"
+          bg="brand.white"
           onClick={sendEmail}
           isLoading={isSubmitting}
           loadingText="Submitting"

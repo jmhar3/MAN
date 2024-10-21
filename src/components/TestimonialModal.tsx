@@ -52,16 +52,17 @@ export const TestimonialModal = (props: TestimonialProps) => {
               <Heading color="green.900">{props.name}</Heading>
               <Divider borderColor="green.900" />
               <Button
-                w="30%"
+                w="25%"
+                size="sm"
                 bg="none"
-                onClick={setShowPhotos.toggle}
                 color="green.900"
-                leftIcon={<BiCamera />}
-                border={`solid 1px ${green900}`}
                 _hover={{
                   bg: "green.900",
-                  color: "brand.200",
+                  color: "brand.white",
                 }}
+                leftIcon={<BiCamera />}
+                onClick={setShowPhotos.toggle}
+                border={`solid 1px ${green900}`}
               >
                 {showPhotos ? "Hide" : "View"} Photos
               </Button>

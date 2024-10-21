@@ -18,7 +18,7 @@ import { Link } from "react-router-dom";
 import { InfoOutlineIcon } from "@chakra-ui/icons";
 
 export const Contact = (props: ContactFormProps) => {
-  const [brand200] = useToken("colors", ["brand.200", "green.900"]);
+  const [white] = useToken("colors", ["brand.white", "green.900"]);
 
   return (
     <Box
@@ -35,7 +35,7 @@ export const Contact = (props: ContactFormProps) => {
           align="center"
           direction="row"
           backgroundBlendMode="lighten"
-          border={`solid 1px ${brand200}`}
+          border={`solid 1px ${white}`}
           justifyContent="space-between"
           backgroundImage="url(/noise.png)"
           backgroundColor="rgba(244,245,241,0.9)"
@@ -75,11 +75,11 @@ export const Contact = (props: ContactFormProps) => {
               as={Link}
               to="/info"
               bg="none"
-              color="brand.200"
+              color="brand.white"
               leftIcon={<InfoOutlineIcon />}
-              border={`solid 1px ${brand200}`}
+              border={`solid 1px ${white}`}
               _hover={{
-                bg: "brand.200",
+                bg: "brand.white",
                 color: "green.900",
               }}
             >

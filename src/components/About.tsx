@@ -68,14 +68,14 @@ export const About = () => {
           <Button
             as={Link}
             to="/info"
-            bg="brand.200"
+            bg="brand.white"
             w="fit-content"
             color="green.900"
             leftIcon={<InfoOutlineIcon />}
             border={`solid 1px ${green900}`}
             _hover={{
               bg: "green.900",
-              color: "brand.200",
+              color: "brand.white",
             }}
           >
             Find out more

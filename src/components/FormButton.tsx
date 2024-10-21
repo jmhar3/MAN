@@ -17,8 +17,8 @@ export const FormButton = (props: FormButtonProps) => (
         ...props.newFormData,
       }))
     }
-    bg={props.isSelected ? "brand.200" : "none"}
-    color={props.isSelected ? "green.900" : "brand.200"}
+    bg={props.isSelected ? "brand.white" : "none"}
+    color={props.isSelected ? "green.900" : "brand.white"}
     _hover={{ bg: "brand.babyGreen", color: "green.900" }}
   >
     {props.label}

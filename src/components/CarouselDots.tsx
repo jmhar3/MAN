@@ -71,7 +71,7 @@ export const DotButton: React.FC<PropType> = (props) => {
       {...props}
     >
       <Circle
-        bg="brand.200"
+        bg="brand.white"
         size="20px"
         rounded="full"
         _hover={{ borderColor: "green.900" }}
