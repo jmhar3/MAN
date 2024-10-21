@@ -2,8 +2,9 @@ import * as React from "react";
 import { Box, Flex, Heading, Img, Stack, Text } from "@chakra-ui/react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { gallery } from "./Gallery";
+import { gallery } from "./Showcase";
 import { useParams } from "react-router-dom";
+import { ImageModal } from "../components/ImageModal";
 
 export const GalleryView = () => {
   let { set: params } = useParams();
@@ -31,9 +32,9 @@ export const GalleryView = () => {
       <Flex gap="5" className="embla" align="center" overflow="hidden">
         <Box ref={emblaRef} className="embla__viewport" overflow="hidden">
           <Stack className="embla__container" align="flex-end" w="30vw">
-            {set?.images.map((image) => (
+            {set?.images.map((imageData) => (
               <Box pr="5" minW="0" className="embla__slide">
-                <Img src={image} />
+                <ImageModal {...imageData} />
               </Box>
             ))}
           </Stack>
@@ -41,9 +42,9 @@ export const GalleryView = () => {
 
         <Box ref={emblaRef} className="embla__viewport" overflow="hidden">
           <Stack className="embla__container" align="flex-end" w="30vw">
-            {set?.images.map((image) => (
+            {set?.images.map((imageData) => (
               <Box pr="5" minW="0" className="embla__slide">
-                <Img src={image} />
+                <ImageModal {...imageData} />
               </Box>
             ))}
           </Stack>
