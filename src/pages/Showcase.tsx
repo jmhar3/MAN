@@ -3,7 +3,7 @@ import { Box, Flex, Heading, Stack } from "@chakra-ui/react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { DotButton, useDotButton } from "../components/CarouselDots";
-import { GalleryItem } from "../components/GalleryItem";
+import { GalleryItem } from "../components/gallery/GalleryItem";
 
 export interface Gallery {
   id: string;

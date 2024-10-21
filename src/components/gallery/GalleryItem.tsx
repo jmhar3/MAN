@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Box, Img, Stack, Heading } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { Gallery } from "../pages/Showcase";
+import { Gallery } from "../../pages/Showcase";
 
 export interface GalleryItemProps extends Gallery {
   isFocused: boolean;

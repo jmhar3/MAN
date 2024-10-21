@@ -17,7 +17,7 @@ import {
 } from "@chakra-ui/react";
 
 import { RatesProps } from "./Rates";
-import { PackageEnum } from "../pages/Home";
+import { PackageEnum } from "../../pages/Home";
 import { ExampleModal } from "./ExampleModal";
 
 export interface PackageProps extends RatesProps {

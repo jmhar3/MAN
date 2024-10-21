@@ -1,7 +1,7 @@
 import * as React from "react";
 import emailjs from "@emailjs/browser";
 import { EmailIcon } from "@chakra-ui/icons";
-import { ContactFormType, ExtrasEnum, PackageEnum } from "../pages/Home";
+import { ContactFormType, ExtrasEnum, PackageEnum } from "../../pages/Home";
 import { FormButton } from "./FormButton";
 
 import {

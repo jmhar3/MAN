@@ -1,10 +1,10 @@
 import * as React from "react";
 import { Welcome } from "../components/Welcome";
-import { About } from "../components/About";
-import { Testimonials } from "../components/Testimonials";
-import { Contact } from "../components/Contact";
+import { About } from "../components/info/About";
+import { Testimonials } from "../components/testimonials/Testimonials";
+import { Contact } from "../components/contact/Contact";
 import ScrollToAnchor from "../helpers/ScrollToAnchor";
-import { Rates } from "../components/Rates";
+import { Rates } from "../components/rates/Rates";
 import { Bumper } from "../components/Bumper";
 
 export enum PackageEnum {

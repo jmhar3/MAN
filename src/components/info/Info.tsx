@@ -1,5 +1,5 @@
 import * as React from "react";
-import { AccordianItem, AccordianItemProps } from "./AccordianItem";
+import { AccordianItem, AccordianItemProps } from "../AccordianItem";
 
 import {
   Box,

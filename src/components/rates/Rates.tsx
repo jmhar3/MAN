@@ -10,8 +10,8 @@ import {
   useToken,
 } from "@chakra-ui/react";
 
-import { SectionContainer } from "./SectionContainer";
-import { ContactFormType } from "../pages/Home";
+import { SectionContainer } from "../SectionContainer";
+import { ContactFormType } from "../../pages/Home";
 import { Package } from "./Package";
 
 export interface RatesProps {

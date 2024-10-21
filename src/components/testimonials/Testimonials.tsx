@@ -1,9 +1,9 @@
 import * as React from "react";
-import { SectionContainer } from "./SectionContainer";
-import { TestimonialModal } from "./TestimonialModal";
+import { SectionContainer } from "../SectionContainer";
+import { TestimonialModal } from "../testimonials/TestimonialModal";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import { DotButton, useDotButton } from "./CarouselDots";
+import { DotButton, useDotButton } from "../CarouselDots";
 
 import {
   Box,

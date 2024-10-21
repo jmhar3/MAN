@@ -4,7 +4,7 @@ import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { gallery } from "./Showcase";
 import { useParams } from "react-router-dom";
-import { ImageModal } from "../components/ImageModal";
+import { ImageModal } from "../components/gallery/ImageModal";
 
 export const GalleryView = () => {
   let { set: params } = useParams();
